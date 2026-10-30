@@ -1403,16 +1403,23 @@ function renderGate(){
 if (gate) {
   renderGate();
   gateTimer = setInterval(renderGate, 1000);
-  $('gateBtn').addEventListener('click', () => {
+ $('#gateBtn').addEventListener('click', () => {
     started = true;
     playBg();
-    confetti(innerWidth / 2, innerHeight * 0.6, 120);
-    gate.classList.add('leave');
+    confetti(innerWidth / 2, innerHeight * 0.6, 12);
+    
+    const gate = document.getElementById('gateBtn');
+    if (gate) gate.classList.add('leave');
+    
     clearInterval(gateTimer);
-    const h = $('heroTitle'); if (h) h.innerHTML = h.innerHTML;
-    setTimeout(() => gate.classList.add('gone'), 700);
-  });
-}
+    
+    const h = document.querySelector('.herotitle');
+    if (h) h.innerHTML = h.innerHTML;
+    
+    setTimeout(() => {
+        if (gate) gate.classList.add('gone');
+    }, 700);
+});}
 
 function go(n){
   n = Math.min(PAGES, Math.max(1, n));
