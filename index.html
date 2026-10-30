@@ -201,7 +201,6 @@ document.documentElement.classList.add('theme-' + (CONFIG.theme || 'maroon'));
 if (CONFIG.candleColor) document.documentElement.style.setProperty('--candle', CONFIG.candleColor);
 if (CONFIG.candleColor2) document.documentElement.style.setProperty('--candle2', CONFIG.candleColor2);
 </script>
-
 <title>Happy Birthday</title>
 <!-- الخطوط الكلاسيكية والأنماط الأنيقة -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -784,10 +783,10 @@ document.querySelectorAll('[data-label]').forEach(el => { if (TX[el.dataset.labe
 
 function ph(label){
   return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><rect width="400" height="400" fill="#d8cdcd"/><text x="200" y="210" font-family="sans-serif" font-size="28" fill="#86454e" text-anchor="middle">${label}</text></svg>`);
+    <svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><rect width="400" height="400" fill="#d8cdcd"/><text x="200" y="210" font-family="sans-serif" font-size="28" fill="#86454e" text-anchor="middle">${label}</text></svg>);
 }
 function pic(src, label, cls = ''){
-  return `<img src="${src}" class="${cls}" alt="" loading="lazy" onerror="this.onerror=null;this.src=ph('${label}')">`;
+  return <img src="${src}" class="${cls}" alt="" loading="lazy" onerror="this.onerror=null;this.src=ph('${label}')">;
 }
 function setImg(el, src, label){
   if (!el) return;
@@ -846,9 +845,9 @@ function tickConfetti(){
 }
 
 $('nav').innerHTML = Array.from({ length: PAGES }, (_, i) =>
-  `<button data-go="${i + 1}" data-num="${i + 1}" class="${i === 0 ? 'active' : ''}">${(CONFIG.navLabels && CONFIG.navLabels[i]) || 'Page ' + (i + 1)}</button>`).join('');
+  <button data-go="${i + 1}" data-num="${i + 1}" class="${i === 0 ? 'active' : ''}">${(CONFIG.navLabels && CONFIG.navLabels[i]) || 'Page ' + (i + 1)}</button>).join('');
 
-$('heroTitle').innerHTML = (CONFIG.heroLines || []).map((l, i) => `<span style="animation-delay:${0.1 + i * 0.2}s">${l}</span>`).join('');
+$('heroTitle').innerHTML = (CONFIG.heroLines || []).map((l, i) => <span style="animation-delay:${0.1 + i * 0.2}s">${l}</span>).join('');
 setImg($('babyImg'), CONFIG.babyPhoto, 'baby photo');
 if (!CONFIG.showHat && $('hat')) $('hat').style.display = 'none';
 $('openBtn').addEventListener('click', e => {
@@ -861,7 +860,7 @@ function traitCol(list, side){
   const n = list.length;
   return list.map((t, i) => {
     const off = Math.round(42 * Math.sin(Math.PI * (n > 1 ? i / (n - 1) : 0.5)));
-    return `<span class="trait" dir="auto" style="${side}:${off}px;transition-delay:${(0.1 + i * 0.1).toFixed(2)}s">${t}</span>`;
+    return <span class="trait" dir="auto" style="${side}:${off}px;transition-delay:${(0.1 + i * 0.1).toFixed(2)}s">${t}</span>;
   }).join('');
 }
 $('traitsL').innerHTML = traitCol(CONFIG.traitsLeft, 'right');
@@ -869,21 +868,21 @@ $('traitsR').innerHTML = traitCol(CONFIG.traitsRight, 'left');
 setImg($('mainImg'), CONFIG.mainPhoto, 'photo');
 const SPARKS = [["#e8c547",4,8],["#8fbf6a",-2,60],["#b04fd6",22,95],["#e58fb8",55,-6],["#4fb3c9",92,10],["#e58fb8",88,82]];
 $('blobWrap').insertAdjacentHTML('beforeend', SPARKS.map(([c, t, l], i) =>
-  `<svg class="spark" viewBox="0 0 24 24" style="top:${t}%;left:${l}%;animation-delay:${i * 0.4}s"><path fill="${c}" d="M12 0C13 8 16 11 24 12C16 13 13 16 12 24C11 16 8 13 0 12C8 11 11 8 12 0Z"/></svg>`).join(''));
+  <svg class="spark" viewBox="0 0 24 24" style="top:${t}%;left:${l}%;animation-delay:${i * 0.4}s"><path fill="${c}" d="M12 0C13 8 16 11 24 12C16 13 13 16 12 24C11 16 8 13 0 12C8 11 11 8 12 0Z"/></svg>).join(''));
 
 (function buildReveal(){
   const text = CONFIG.memoriesText || '';
   const arabic = /[\u0600-\u06FF]/.test(text);
   let html = '';
-  text.split(/(\*[^*]+\*)/).forEach(part => {
+  text.split(/(\[^]+\*)/).forEach(part => {
     if (!part) return;
-    const hl = part.length > 2 && part.startsWith('*') && part.endsWith('*');
+    const hl = part.length > 2 && part.startsWith('') && part.endsWith('');
     const clean = hl ? part.slice(1, -1) : part;
     const units = arabic ? clean.split(/(\s+)/) : [...clean];
     units.forEach(u => {
       if (!u) return;
       if (/^\s+$/.test(u)){ html += ' '; return; }
-      html += `<span${hl ? ' class="hl"' : ''} style="transition-delay:${(Math.random() * 1.8).toFixed(2)}s">${u}</span>`;
+      html += <span${hl ? ' class="hl"' : ''} style="transition-delay:${(Math.random() * 1.8).toFixed(2)}s">${u}</span>;
     });
   });
   $('revealText').innerHTML = html;
@@ -892,7 +891,7 @@ $('blobWrap').insertAdjacentHTML('beforeend', SPARKS.map(([c, t, l], i) =>
 const POS = [[4,2,-6],[33,7,5],[64,3,3],[1,46,4],[32,50,-3],[63,43,-7]];
 $('collage').innerHTML = (CONFIG.polaroids || []).slice(0, 6).map((src, i) => {
   const [l, t, r] = POS[i];
-  return `<div class="polaroid" style="left:${l}%;top:${t}%;--r:${r}deg;--d:${(0.1 + i * 0.1).toFixed(2)}s">${pic(src, 'photo ' + (i + 1))}</div>`;
+  return <div class="polaroid" style="left:${l}%;top:${t}%;--r:${r}deg;--d:${(0.1 + i * 0.1).toFixed(2)}s">${pic(src, 'photo ' + (i + 1))}</div>;
 }).join('');
 
 $('letterTitle').textContent = CONFIG.letterTitle || '';
@@ -907,7 +906,7 @@ $('gGrid').innerHTML = (CONFIG.gallery || []).map((g, i) => `
   <button class="g-card" style="--r:${ROT[i % ROT.length]}deg;--d:${(i * 0.05).toFixed(2)}s">
     <span class="tape"></span>
     ${pic(g.photo, 'photo ' + (i + 1))}
-    ${g.caption ? `<span class="g-cap" dir="auto">${g.caption}</span>` : ''}
+    ${g.caption ? <span class="g-cap" dir="auto">${g.caption}</span> : ''}
   </button>`).join('');
 document.querySelectorAll('.g-card').forEach(card => card.addEventListener('click', () => {
   $('lbImg').src = card.querySelector('img').src;
@@ -921,9 +920,9 @@ $('reasonsTitle').textContent = CONFIG.reasonsTitle || '';
 $('reasonsSub').textContent = CONFIG.reasonsSubtitle || '';
 const RS = Array.isArray(CONFIG.reasons) ? CONFIG.reasons : [];
 $('rGrid').innerHTML = RS.map((t, i) =>
-  `<button class="rcard" style="--d:${(i * 0.03).toFixed(2)}s"><span class="rinner"><span class="rface rfront"><b>${i + 1}</b><i>&#9829;</i></span><span class="rface rback" dir="auto">${t}</span></span></button>`).join('');
+  <button class="rcard" style="--d:${(i * 0.03).toFixed(2)}s"><span class="rinner"><span class="rface rfront"><b>${i + 1}</b><i>&#9829;</i></span><span class="rface rback" dir="auto">${t}</span></span></button>).join('');
 const seenReasons = new Set();
-function updReasonCount(){ $('rCount').textContent = `${seenReasons.size} / ${RS.length}`; }
+function updReasonCount(){ $('rCount').textContent = ${seenReasons.size} / ${RS.length}; }
 updReasonCount();
 document.querySelectorAll('.rcard').forEach((c, i) => c.addEventListener('click', () => {
   c.classList.toggle('flip');
@@ -972,7 +971,7 @@ $('envelope').addEventListener('click', () => {
 $('voiceTitle').textContent = CONFIG.voiceTitle || '';
 $('voiceSub').textContent = CONFIG.voiceSubtitle || '';
 setImg($('voiceImg'), CONFIG.voicePhoto, 'photo');
-const bars = n => Array.from({ length: n }, () => `<i style="--h:${Math.round(30 + Math.random() * 70)}%;--dl:${(Math.random() * 0.9).toFixed(2)}s"></i>`).join('');
+const bars = n => Array.from({ length: n }, () => <i style="--h:${Math.round(30 + Math.random() * 70)}%;--dl:${(Math.random() * 0.9).toFixed(2)}s"></i>).join('');
 $('waveL').innerHTML = bars(9);
 $('waveR').innerHTML = bars(9);
 
@@ -980,12 +979,12 @@ $('songsTitle').textContent = CONFIG.songsTitle || '';
 $('songsSub').innerHTML = CONFIG.songsSubtitle || '';
 setImg($('songsImg'), CONFIG.songsPhoto, 'photo');
 const SQ = [[8,-3],[3,10],[30,93],[46,96],[70,-4],[88,80],[96,40]];
-$('songsPhoto').insertAdjacentHTML('beforeend', SQ.map(([t, l], i) => `<span class="sq" style="top:${t}%;left:${l}%;animation-delay:${i * 0.35}s"></span>`).join(''));
+$('songsPhoto').insertAdjacentHTML('beforeend', SQ.map(([t, l], i) => <span class="sq" style="top:${t}%;left:${l}%;animation-delay:${i * 0.35}s"></span>).join(''));
 $('covers').innerHTML = (CONFIG.songs || []).map((s, i) => `
   <button class="cover" data-i="${i}" style="--d:${(i * 0.04).toFixed(2)}s">
     ${pic(s.cover, 'cover ' + (i + 1))}
     <span class="eq"><i></i><i></i><i></i></span>
-    ${CONFIG.showSongTitles ? `<span class="cap" dir="auto">${s.title}</span>` : ''}
+    ${CONFIG.showSongTitles ? <span class="cap" dir="auto">${s.title}</span> : ''}
   </button>`).join('');
 
 $('finaleTitle').textContent = CONFIG.finaleTitle || '';
@@ -995,11 +994,11 @@ const ageDigits = String(CONFIG.age || '').replace(/\D/g, '');
 if (ageDigits){
   $('candles').classList.add('nums');
   $('candles').innerHTML = [...ageDigits].map((d, i) =>
-    `<div class="candle num"><span class="digit">${d}</span><span class="flame" style="animation-delay:${(i * 0.07).toFixed(2)}s"></span><span class="smoke"></span></div>`).join('');
+    <div class="candle num"><span class="digit">${d}</span><span class="flame" style="animation-delay:${(i * 0.07).toFixed(2)}s"></span><span class="smoke"></span></div>).join('');
 } else {
   const nCandles = Math.max(1, Math.min(12, parseInt(CONFIG.candles, 10) || 5));
   $('candles').innerHTML = Array.from({ length: nCandles }, (_, i) =>
-    `<div class="candle" style="height:${42 + (i % 3) * 4}px"><span class="flame" style="animation-delay:${(i * 0.05).toFixed(2)}s"></span><span class="smoke"></span></div>`).join('');
+    <div class="candle" style="height:${42 + (i % 3) * 4}px"><span class="flame" style="animation-delay:${(i * 0.05).toFixed(2)}s"></span><span class="smoke"></span></div>).join('');
 }
 let blown = false;
 function resetCake(){
@@ -1031,4 +1030,380 @@ $('wishBtn').textContent = CONFIG.wishBtnText || '';
 let wishSent = false;
 
 function sparkle(x, y){
-  const color
+  const colors = ['#ffffff', '#ffd45c', CCOLORS[0], CONFIG.candleColor || '#c9a8f0'];
+  for (let i = 0; i < 14; i++){
+    const s = document.createElement('span');
+    s.className = 'wstar';
+    const a = Math.random() * Math.PI * 2, d = 40 + Math.random() * 80;
+    s.style.left = x + 'px';
+    s.style.top = y + 'px';
+    s.style.background = colors[i % colors.length];
+    s.style.setProperty('--sx', Math.round(Math.cos(a) * d) + 'px');
+    s.style.setProperty('--sy', Math.round(Math.sin(a) * d - 30) + 'px');
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 1400);
+  }
+}
+
+$('wishBtn').addEventListener('click', () => {
+  if (wishSent) return;
+  const txt = $('wishText').value.trim();
+  if (!txt){ $('wishText').focus(); return; }
+  
+  wishSent = true;
+  $('wishText').blur();
+
+  // تنفيذ أنيميشن الطيران فوراً دون انتظار شبكة الإنترنت
+  const r = $('wishPaper').getBoundingClientRect();
+  $('wish').classList.add('sent');
+  sparkle(r.left + r.width / 2, r.top + r.height / 2);
+  setTimeout(() => sparkle(innerWidth / 2, innerHeight * 0.2), 800);
+  setTimeout(() => {
+    $('wishDone').textContent = CONFIG.wishDoneText;
+    $('wishDone').classList.add('on');
+  }, 1200);
+
+  // الإرسال في الخلفية
+  if (WISH_EMAIL){
+    fetch('https://formsubmit.co/ajax/' + WISH_EMAIL, {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json', 
+        'Accept': 'application/json' 
+      },
+      body: JSON.stringify({ 
+        _subject: NAME + "'s birthday wish & message 💜", 
+        wish: txt 
+      })
+    }).catch(() => {});
+  }
+});
+
+const ICON = {
+  play:  '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>',
+  pause: '<svg viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>',
+  note:  '<svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>',
+  mute:  '<svg viewBox="0 0 24 24"><path d="M4.27 3 3 4.27l9 9v.28A4 4 0 1 0 14 17v-1.73L19.73 21 21 19.73 4.27 3zM14 7h4V3h-6v5.18l2 2V7z"/></svg>'
+};
+const bg = $('bg');
+if (CONFIG.bgMusic) bg.src = CONFIG.bgMusic;
+
+// تحسين الفويس والتحميل
+const voice = new Audio(CONFIG.voiceNote || 'voice.mp3');
+voice.preload = 'auto';
+voice.setAttribute('playsinline', '');
+
+const song = new Audio();
+song.setAttribute('playsinline', '');
+let started = false, musicOn = true, current = -1, playToken = 0;
+
+function playBg(){
+  if (!started || !musicOn || current >= 0 || !voice.paused) return;
+  if (vmodalOpen()) return;
+  if (bg.paused && bg.src){
+    bg.volume = 0;
+    bg.play().catch(() => {});
+  }
+  fadeTo(bg, CONFIG.bgVolume || 0.35, 1000);
+}
+function pauseBg(){ if (!bg.paused) fadeTo(bg, 0, 400, () => bg.pause()); }
+
+function updMusicBtn(){ const b = $('musicBtn'); b.innerHTML = musicOn ? ICON.note : ICON.mute; b.classList.toggle('off', !musicOn); }
+updMusicBtn();
+$('musicBtn').addEventListener('click', () => {
+  if (!started){ started = true; musicOn = true; } else musicOn = !musicOn;
+  musicOn ? playBg() : pauseBg();
+  updMusicBtn();
+});
+
+const voiceBtn = $('voiceBtn');
+voiceBtn.innerHTML = ICON.play;
+function setVoiceUI(on){
+  voiceBtn.innerHTML = on ? ICON.pause : ICON.play;
+  $('record').classList.toggle('playing', on);
+  document.querySelectorAll('.wave').forEach(w => w.classList.toggle('playing', on));
+}
+function updVoiceTime(){
+  const d = isFinite(voice.duration) ? voice.duration : 0;
+  $('vBar').style.width = d ? (voice.currentTime / d * 100) + '%' : '0%';
+  $('vTime').textContent = fmt(voice.currentTime) + ' / ' + fmt(d);
+}
+
+voiceBtn.addEventListener('click', () => {
+  started = true;
+  if (voice.paused){
+    stopSong(false);
+    pauseBg();
+    voice.load(); // إعادة تحميل الملف عند التشغيل للتأكيد
+    voice.play().then(() => setVoiceUI(true)).catch(err => {
+      console.error(err);
+      alert("Please ensure the voice file is saved as 'voice.mp3' in the repository.");
+      setVoiceUI(false);
+      playBg();
+    });
+  } else voice.pause();
+});
+
+// أزرار التقديم والتأخير 10 ثوانٍ للفويس
+$('rewindBtn').addEventListener('click', () => {
+  if (isFinite(voice.currentTime)) {
+    voice.currentTime = Math.max(0, voice.currentTime - 10);
+    updVoiceTime();
+  }
+});
+$('forwardBtn').addEventListener('click', () => {
+  if (isFinite(voice.duration)) {
+    voice.currentTime = Math.min(voice.duration, voice.currentTime + 10);
+    updVoiceTime();
+  }
+});
+
+voice.addEventListener('play', () => setVoiceUI(true));
+voice.addEventListener('pause', () => { setVoiceUI(false); playBg(); });
+voice.addEventListener('timeupdate', updVoiceTime);
+voice.addEventListener('loadedmetadata', updVoiceTime);
+$('vProg').addEventListener('click', e => {
+  if (!isFinite(voice.duration)) return;
+  const r = e.currentTarget.getBoundingClientRect();
+  voice.currentTime = (e.clientX - r.left) / r.width * voice.duration;
+});
+
+function markCovers(){
+  document.querySelectorAll('.cover').forEach(b => b.classList.toggle('playing', +b.dataset.i === current));
+  $('now').classList.toggle('on', current >= 0);
+}
+function stopSong(resume){
+  if (current < 0) return;
+  current = -1;
+  playToken++;
+  clearInterval(song._fade);
+  song.pause();
+  markCovers();
+  if (resume) playBg();
+}
+
+function playSong(i){
+  started = true;
+  if (current === i){ stopSong(true); return; }
+  stopSong(false);
+  const s = CONFIG.songs[i];
+  current = i;
+  const token = ++playToken;
+  voice.pause();
+  pauseBg();
+
+  song._fading = false;
+  song.volume = 1;
+  song.src = s.file + '#t=' + (s.start || 0);
+
+  song.play().then(() => {
+    if (token !== playToken) return;
+    $('nowText').textContent = TX.nowPlaying + ' · ' + s.title + (s.artist ? ' — ' + s.artist : '');
+    markCovers();
+  }).catch(() => {
+    if (token !== playToken) return;
+    stopSong(true);
+  });
+}
+song.addEventListener('loadedmetadata', () => {
+  if (current < 0) return;
+  const st = CONFIG.songs[current].start || 0;
+  if (Math.abs(song.currentTime - st) > 1) song.currentTime = st;
+});
+song.addEventListener('timeupdate', () => {
+  if (current < 0) return;
+  const s = CONFIG.songs[current];
+  const start = s.start || 0;
+  const end = s.end || (isFinite(song.duration) ? song.duration : 0);
+  if (!end) return;
+  const left = end - song.currentTime;
+  $('nowBar').style.width = Math.min(100, Math.max(0, (song.currentTime - start) / (end - start) * 100)) + '%';
+  if (left < 1.6 && !song._fading){ song._fading = true; fadeTo(song, 0, Math.max(250, left * 1000)); }
+  if (left <= 0.05) stopSong(true);
+});
+song.addEventListener('ended', () => stopSong(true));
+document.querySelectorAll('.cover').forEach(b => b.addEventListener('click', () => playSong(+b.dataset.i)));
+
+const vmodal = $('vmodal'), vplayer = $('vplayer');
+let vDone = null;
+function vmodalOpen(){ return vmodal ? vmodal.classList.contains('on') : false; }
+function showVideo(src, done){
+  if (!src) { if (done) done(); return; }
+  vDone = done || null;
+  stopSong(false);
+  voice.pause();
+  pauseBg();
+  vplayer.src = src;
+  vmodal.classList.add('on');
+  vplayer.play().catch(() => {
+    closeVideo();
+  });
+}
+function closeVideo(){
+  if (!vmodalOpen()) return;
+  vplayer.pause();
+  vmodal.classList.remove('on');
+  const d = vDone; vDone = null;
+  if (d) d();
+  playBg();
+}
+if ($('vclose')) $('vclose').addEventListener('click', e => { e.stopPropagation(); closeVideo(); });
+if (vplayer) {
+  vplayer.addEventListener('ended', closeVideo);
+  vplayer.onerror = () => { closeVideo(); };
+}
+if (vmodal) vmodal.addEventListener('click', e => { if (e.target === vmodal) closeVideo(); });
+
+const askImg = $('askImg'), yesBtn = $('yesBtn'), noBtn = $('noBtn');
+if (askImg) {
+  askImg.onerror = () => { askImg.style.display = 'none'; };
+  if (CONFIG.askPhoto) askImg.src = CONFIG.askPhoto; else askImg.style.display = 'none';
+}
+if ($('askQ')) $('askQ').textContent = CONFIG.loveQuestion || '';
+if ($('yesMsg')) $('yesMsg').textContent = CONFIG.yesText || '';
+const MAX_DODGES = Math.max(1, parseInt(CONFIG.noDodges, 10) || 6);
+let dodges = 0, lastDodge = 0;
+function resetNo(){
+  if (!noBtn) return;
+  noBtn.classList.remove('run');
+  noBtn.style.left = ''; noBtn.style.top = '';
+}
+function dodge(e){
+  if (dodges >= MAX_DODGES) return;
+  if (e){ e.preventDefault(); e.stopPropagation(); }
+  dodges++;
+  lastDodge = Date.now();
+  noBtn.textContent = dodges >= MAX_DODGES ? CONFIG.noGiveUpText
+    : (CONFIG.noTexts && CONFIG.noTexts.length ? CONFIG.noTexts[(dodges - 1) % CONFIG.noTexts.length] : TX.no);
+  yesBtn.style.setProperty('--g', Math.min(1 + dodges * 0.12, 2).toFixed(2));
+  const r = noBtn.getBoundingClientRect();
+  const w = r.width, h = r.height;
+  const px = e && e.clientX != null ? e.clientX : r.left + w / 2;
+  const py = e && e.clientY != null ? e.clientY : r.top + h / 2;
+  let x, y, tries = 0;
+  do {
+    x = 12 + Math.random() * Math.max(10, innerWidth - w - 24);
+    y = 56 + Math.random() * Math.max(10, innerHeight - h - 70);
+    tries++;
+  } while (tries < 25 && Math.hypot(x + w / 2 - px, y + h / 2 - py) < 160);
+  if (!noBtn.classList.contains('run')){
+    noBtn.style.left = r.left + 'px';
+    noBtn.style.top = r.top + 'px';
+    noBtn.classList.add('run');
+    void noBtn.offsetWidth;
+  }
+  noBtn.style.left = x + 'px';
+  noBtn.style.top = y + 'px';
+}
+if (noBtn) {
+  noBtn.addEventListener('pointerdown', dodge);
+  noBtn.addEventListener('mouseenter', dodge);
+  noBtn.addEventListener('click', e => {
+    e.preventDefault(); e.stopPropagation();
+    if (Date.now() - lastDodge < 500) return;
+    if (dodges < MAX_DODGES){ dodge(e); return; }
+    started = true;
+    if (CONFIG.noVideo) {
+      showVideo(CONFIG.noVideo, () => {
+        resetNo();
+        noBtn.style.display = 'none';
+        $('askQ').textContent = CONFIG.onlyYesText;
+      });
+    } else {
+      resetNo();
+      noBtn.style.display = 'none';
+      $('askQ').textContent = CONFIG.onlyYesText;
+    }
+  });
+}
+if (yesBtn) {
+  yesBtn.addEventListener('click', () => {
+    started = true;
+    const r = yesBtn.getBoundingClientRect();
+    confetti(r.left + r.width / 2, r.top + r.height / 2, 130);
+    confetti(innerWidth * 0.2, innerHeight * 0.85, 50);
+    confetti(innerWidth * 0.8, innerHeight * 0.85, 50);
+    resetNo();
+    $('ask').classList.add('done');
+    if (CONFIG.yesVideo) showVideo(CONFIG.yesVideo);
+  });
+}
+
+const gate = $('gate');
+const PREVIEW = new URLSearchParams(location.search).has('preview');
+function parseDate(s){
+  if (!s) return null;
+  const m = String(s).match(/^(\d{4})-(\d{1,2})-(\d{1,2})(?:[T ](\d{1,2}):(\d{2}))?/);
+  return m ? new Date(+m[1], +m[2] - 1, +m[3], +(m[4] || 0), +(m[5] || 0)) : null;
+}
+const BIRTH = parseDate(CONFIG.birthDate), UNLOCK = parseDate(CONFIG.unlockAt);
+let gateTimer = null, gateState = '';
+function two(n){ return String(n).padStart(2, '0'); }
+function cdBlocks(ms, forceDays){
+  const s = Math.max(0, Math.floor(ms / 1000));
+  const d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60), sec = s % 60;
+  const L = CONFIG.gateLabels || ['days', 'hours', 'min', 'sec'];
+  const ps = [];
+  if (d > 0 || forceDays) ps.push([d, L[0]]);
+  ps.push([h, L[1]], [m, L[2]], [sec, L[3]]);
+  return ps.map(([n, l]) => <div class="cd-b"><b>${two(n)}</b><span>${l}</span></div>).join('');
+}
+function ageInfo(now){
+  let years = now.getFullYear() - BIRTH.getFullYear();
+  let last = new Date(BIRTH); last.setFullYear(BIRTH.getFullYear() + years);
+  if (last > now){ years--; last = new Date(BIRTH); last.setFullYear(BIRTH.getFullYear() + years); }
+  return { years, since: now - last, total: now - BIRTH };
+}
+const fillAge = (s, a) => String(s || '').replace(/\{age\}/g, a);
+function renderGate(){
+  const now = new Date();
+  const locked = UNLOCK && now < UNLOCK && !PREVIEW;
+  if (locked){
+    if (gateState !== 'locked'){
+      gateState = 'locked';
+      $('gateKicker').textContent = CONFIG.gateLockedKicker;
+      $('gateTitle').textContent = CONFIG.gateLockedTitle;
+      $('gateSub').textContent = CONFIG.gateLockedSub;
+      $('gateNote').textContent = CONFIG.gateLockedNote;
+      $('gateStats').innerHTML = '';
+      $('gateBtn').hidden = true;
+    }
+    $('gateCount').innerHTML = cdBlocks(UNLOCK - now);
+    return;
+  }
+  if (gateState !== 'open'){
+    if (gateState === 'locked'){
+      confetti(innerWidth / 2, innerHeight * 0.4, 150);
+    }
+    gateState = 'open';
+    $('gateKicker').textContent = CONFIG.gateOpenKicker;
+    $('gateNote').textContent = '';
+    $('gateBtn').textContent = CONFIG.gateBtnText;
+    $('gateBtn').hidden = false;
+  }
+  const age = BIRTH ? ageInfo(now).years : (CONFIG.age || '');
+  $('gateTitle').textContent = fillAge(CONFIG.gateOpenTitle, age);
+  if (BIRTH){
+    const a = ageInfo(now);
+    $('gateSub').textContent = fillAge(CONFIG.gateOpenSub, a.years);
+    $('gateCount').innerHTML = cdBlocks(a.since, true);
+    const days = Math.floor(a.total / 86400000), hours = Math.floor(a.total / 3600000), beats = Math.floor(a.total / 60000) * 80;
+    $('gateStats').innerHTML = [
+      ${days.toLocaleString('en-US')} ${CONFIG.gateStatDays},
+      ${hours.toLocaleString('en-US')} ${CONFIG.gateStatHours},
+      ~${beats.toLocaleString('en-US')} ${CONFIG.gateStatBeats}
+    ].map(t => <span>${t}</span>).join('');
+  } else {
+    $('gateSub').textContent = '';
+    $('gateCount').innerHTML = '';
+    $('gateStats').innerHTML = '';
+  }
+}
+
+if (gate) {
+  renderGate();
+  gateTimer = setInterval(renderGate, 1000);
+  $('gateBtn').addEventListener('click', () => {
+    started = true;
+    playBg();
+    confetti(innerWidth / 2, innerHeight * 0.6, 12
