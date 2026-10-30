@@ -1406,4 +1406,37 @@ if (gate) {
   $('gateBtn').addEventListener('click', () => {
     started = true;
     playBg();
-    confetti(innerWidth / 2, innerHeight * 0.6, 12
+    confetti(innerWidth / 2, innerHeight * 0.6, 120);
+    gate.classList.add('leave');
+    clearInterval(gateTimer);
+    const h = $('heroTitle'); if (h) h.innerHTML = h.innerHTML;
+    setTimeout(() => gate.classList.add('gone'), 700);
+  });
+}
+
+function go(n){
+  n = Math.min(PAGES, Math.max(1, n));
+  stopSong(false);
+  voice.pause();
+  $('lightbox').classList.remove('on');
+  if (n === 8 && !$('ask').classList.contains('done')) resetNo();
+  if (n === 9) resetCake();
+  document.querySelectorAll('.page').forEach((p, i) => p.classList.toggle('active', i + 1 === n));
+  document.querySelectorAll('nav button').forEach((b, i) => b.classList.toggle('active', i + 1 === n));
+  window.scrollTo(0, 0);
+  playBg();
+}
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-go]');
+  if (!t) return;
+  started = true;
+  go(+t.dataset.go);
+});
+
+const io = new IntersectionObserver(entries => entries.forEach(en => {
+  if (en.isIntersecting) en.target.classList.add('show');
+}), { threshold: 0.1 });
+document.querySelectorAll('.observe').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
