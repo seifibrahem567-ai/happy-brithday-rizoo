@@ -6,29 +6,42 @@
 
 <script>
 /* =====================================================
-   ✏️ إعدادات وتكست الموقع الكاملة
+   ✏️ إعدادات وتكست الموقع الكاملة (كل التعديلات من هنا بس)
    ===================================================== */
 
-const NAME = "rezoo";   // اسمها
-const ME   = "seif";   // اسمك
+const NAME = "Rezoo";   // اسمها
+const ME   = "seif";    // اسمك
 
 const CONFIG = {
   theme: "maroon",     // ألوان الموقع: "maroon" النبيتي أو "purple" بنفسجي
-  
-  // 📧 إيميل استقبال الأمنية والجواب عبر الجيميل
+
+  // 📧 الأمنية اللي هتكتبها في الآخر بتوصلك على الإيميل ده
+  // (على الكمبيوتر بيفتح الجيميل، وعلى الموبايل بيفتح تطبيق الإيميل)
   wishEmail: "seifibrhem567@gmail.com",
-  wishHintShared: "now make a wish, and let it fly ✨",
+  wishSubject: `a birthday wish from ${NAME} 💫`,
   wishHint: "now make a wish, and let it fly ✨",
   wishPlaceholder: "Write your wish or message here... ✨",
   wishBtnText: "send it to the stars ✨",
   wishDoneText: "your wish is on its way 💫",
 
-  tabTitle: "Happy 22st Birthday " + NAME,
+  tabTitle: "Happy 22nd Birthday " + NAME,
   navLabels: ["Page 1", "Page 2", "Page 3", "Page 4", "Page 5", "Page 6", "Page 7", "Page 8", "Page 9"],
 
-  // 🔒 تاريخ الميلاد وقفل الموقع (فارغة لفتح الموقع فوراً)
+  // 🔒 قفل الموقع لحد يوم عيد ميلادها
+  // birthDate: تاريخ ميلادها بالشكل ده "2004-11-05" — لو فاضي الموقع يفتح على طول
+  // unlockAt: الساعة اللي الموقع يفتح فيها يوم عيد ميلادها
+  // عشان تجرّبه وهو مقفول: زوّد ?preview في آخر اللينك
   birthDate: "",
-  unlockAt: " 00:00",
+  unlockAt: "00:00",
+
+  // شاشة البداية
+  gate: {
+    kicker: "a little something for you",
+    openTitle: `Happy Birthday, ${NAME}`,
+    openSub: "turn your sound on 🎧",
+    lockedTitle: "not yet…",
+    lockedSub: "this opens on your birthday ✨"
+  },
 
   // كلام الزراير بالإنجليزي
   texts: {
@@ -43,7 +56,7 @@ const CONFIG = {
   },
 
   /* ================= الصفحة ١ : الافتتاحية ================= */
-  heroLines: ["HAPPY", "22st BIRTHDAY", "Rezoo"],
+  heroLines: ["HAPPY", "22nd BIRTHDAY", NAME],
   babyPhoto: "baby.png",
   showHat: true,
 
@@ -76,8 +89,10 @@ A little note before you keep going: today is all about you, and I hope every pa
     { photo: "g4.jpg" }
   ],
 
-  /* ================= الصفحة ٤ : 21 سبب ================= */
+  /* ================= الصفحة ٤ : 22 سبب ================= */
   reasonsTitle: "22 reasons why I love you",
+  reasonsSubtitle: "tap each card",
+  reasonsDone: "and a million more 💜",
   reasons: [
     "you're the kindest soul I know",
     "your heart is pure, always",
@@ -99,21 +114,22 @@ A little note before you keep going: today is all about you, and I hope every pa
     "you make ordinary days feel special",
     "you make me want to be better",
     "every moment with you is my favorite",
-     "I Love everything about you ",
+    "I love everything about you",
     "because you're you, and there's no one like you 💜"
   ],
 
   /* ================= الصفحة ٥ : الرسالة العربية الكبيرة ================= */
-  messageTo: ,
-  message: ` .
- `,
-  messageFrom: ``,
+  messageTo: "ريزو،",
+  // ✍️ اكتب رسالتك هنا بين العلامتين ` ` (تقدر تنزل سطر جديد عادي)
+  message: `
+`,
+  messageFrom: "سيف",
 
   /* ================= الصفحة ٦ : الفويس ================= */
   voiceTitle: "a little voice note for you",
   voiceSubtitle: "press play and listen till the end",
   voicePhoto: "voice-photo.jpg",
-  voiceNote: "voice.mp3", // تم ضبط الامتداد للأفضل والأشمل mp3
+  voiceNote: "voice.mp3",
 
   /* ================= الصفحة ٧ : الأغاني ================= */
   songsTitle: "Songs",
@@ -188,13 +204,13 @@ A little note before you keep going: today is all about you, and I hope every pa
   onlyYesText: "now there's only one answer 😌",
   noDodges: 6,
 
-  /* ================= الصفحة ٩ : التورتة والجواب ================= */
+  /* ================= الصفحة ٩ : التورتة والأمنية ================= */
   finaleTitle: `make a wish, ${NAME}`,
-  age: 22,
+  age: 22,                       // عدد الشمع على التورتة
   candleColor: "#9b59d9",
   candleColor2: "#bf94ee",
   cakePurple: false,
-  finaleText: "Happy 22st birthday. I hope this year gives you everything you deserve, and more."
+  finaleText: "Happy 22nd birthday. I hope this year gives you everything you deserve, and more."
 };
 
 document.documentElement.classList.add('theme-' + (CONFIG.theme || 'maroon'));
@@ -202,7 +218,6 @@ if (CONFIG.candleColor) document.documentElement.style.setProperty('--candle', C
 if (CONFIG.candleColor2) document.documentElement.style.setProperty('--candle2', CONFIG.candleColor2);
 </script>
 <title>Happy Birthday</title>
-<!-- الخطوط الكلاسيكية والأنماط الأنيقة -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600&family=Caveat:wght@500;600&family=Fredoka:wght@600;700&family=Libre+Baskerville:ital@0;1&family=Playfair+Display:ital@0;1&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
@@ -225,18 +240,13 @@ html.theme-purple{
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%}
 body{font-family:'Poppins','Cairo',sans-serif;background:var(--dark);color:#eee;overflow-x:hidden}
 img{display:block;max-width:100%}
 button{font:inherit;cursor:pointer;color:inherit;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 
-.page, .g-card, .rcard, .polaroid, .trait, .letter, .cover, .face-wrap, .envelope {
-  will-change: transform, opacity;
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
+/* ===== شاشة البداية ===== */
 .gate{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:30px 6vw;background:radial-gradient(ellipse at 50% 35%,var(--main) 0%,var(--darker) 75%);color:#fff;text-align:center;overflow-y:auto;transition:opacity .6s ease,visibility 0s linear .6s}
 .gate.leave{opacity:0;visibility:hidden}
 .gate.gone{display:none}
@@ -248,13 +258,12 @@ button{font:inherit;cursor:pointer;color:inherit;touch-action:manipulation;-webk
 .cd-b{min-width:clamp(64px,16vw,96px);padding:12px 8px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15)}
 .cd-b b{display:block;font-family:'Fredoka','Poppins',sans-serif;font-weight:700;font-size:clamp(30px,7vw,48px);line-height:1}
 .cd-b span{display:block;margin-top:6px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#d9c3c8}
-.gate-note{font-size:14px;color:#e6d3d7}
 .gate-stats{display:flex;flex-direction:column;gap:6px;font-family:'Libre Baskerville','Amiri',serif;font-style:italic;font-size:14px;color:#f3e3e6}
 .gate-btn{margin-top:8px;border:none;border-radius:999px;background:#fff;color:var(--deep);font-size:16px;padding:12px 30px;box-shadow:0 10px 26px rgba(0,0,0,.35);animation:pulse 2s ease-in-out infinite}
-.gate-btn[hidden]{display:none}
 
+/* ===== النافبار والصفحات ===== */
 nav{position:fixed;inset:0 0 auto 0;height:44px;background:var(--nav);display:flex;justify-content:flex-end;align-items:center;gap:22px;padding:0 24px;z-index:50}
-nav button{background:none;border:none;color:#9a9a9a;font-size:12px;transition:color .2s}
+nav button{background:none;border:none;color:#9a9a9a;font-size:12px;transition:color .2s;white-space:nowrap}
 nav button.active,nav button:hover{color:#fff}
 
 .page{display:none;min-height:100vh;min-height:100svh;padding-top:44px}
@@ -263,6 +272,7 @@ nav button.active,nav button:hover{color:#fff}
 .pill:hover{transform:scale(1.05);background:rgba(255,255,255,.08)}
 .end-row{width:100%;display:flex;justify-content:flex-end}
 
+/* ===== الصفحة ١ ===== */
 #p1{background:var(--cream);color:var(--deep)}
 .hero{min-height:calc(100vh - 44px);min-height:calc(100svh - 44px);display:flex;align-items:center;justify-content:space-evenly;flex-wrap:wrap;gap:40px;padding:40px 6vw}
 .hero-title{font-family:'Amatic SC','Cairo',cursive;font-weight:700;font-size:clamp(56px,9vw,104px);line-height:1.15;display:flex;flex-direction:column}
@@ -276,16 +286,20 @@ nav button.active,nav button:hover{color:#fff}
 .hat-dots{fill:var(--hat)}
 .hat-lines{stroke:var(--hat)}
 
+/* ===== الصفحة ٢ ===== */
 .sec{min-height:calc(100vh - 44px);min-height:calc(100svh - 44px);display:flex;align-items:center;justify-content:center;padding:70px 6vw}
 .traits{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:5vw;width:100%;max-width:1000px}
 .trait-col{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(26px,5vh,44px)}
 .trait-col.left{align-items:flex-end}
 .trait{position:relative;font-size:clamp(13px,1.3vw,16px);color:#ececec;opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+.trait::after{content:"";position:absolute;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:var(--accent)}
+.trait-col.left .trait::after{right:-16px}
+.trait-col:not(.left) .trait::after{left:-16px}
 .show .trait{opacity:1;transform:none}
 .blob-wrap{position:relative;width:clamp(220px,30vw,340px);aspect-ratio:1}
 .blob{position:absolute;inset:0;background:var(--blob);border-radius:43% 57% 52% 48%/45% 42% 58% 55%;box-shadow:0 20px 50px rgba(0,0,0,.4);animation:morph 9s ease-in-out infinite}
 .blob-wrap>img{position:absolute;top:13%;left:13%;width:74%;height:74%;object-fit:cover;border-radius:50%}
-.spark{position:absolute;width:20px;height:20px;animation:twinkle 2.4s ease-in-out infinite}
+.spark{position:absolute;width:20px;height:20px;fill:var(--accent);animation:twinkle 2.4s ease-in-out infinite}
 
 .memories{display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center;width:100%;max-width:1050px}
 .reveal{font-family:'Libre Baskerville','Amiri',serif;font-style:italic;font-size:clamp(16px,1.6vw,20px);line-height:1.95;color:#f1f1f1}
@@ -293,7 +307,7 @@ nav button.active,nav button:hover{color:#fff}
 .show .reveal span{opacity:1}
 .reveal .hl{color:var(--soft)}
 .collage{position:relative;width:100%;max-width:470px;aspect-ratio:47/42;margin:auto}
-.polaroid{position:absolute;width:32%;background:#fafafa;padding:2.2% 2.2% 7%;box-shadow:0 10px 25px rgba(0,0,0,.45);transform:rotate(var(--r));opacity:0;transition:transform .25s ease}
+.polaroid{position:absolute;width:32%;background:#fafafa;padding:2.2% 2.2% 7%;box-shadow:0 10px 25px rgba(0,0,0,.45);transform:rotate(var(--r));opacity:0;transition:transform .25s ease;cursor:pointer}
 .show .polaroid{opacity:1;animation:drop .6s ease backwards;animation-delay:var(--d)}
 .polaroid:hover{transform:rotate(0) scale(1.08);z-index:10}
 .polaroid img{width:100%;aspect-ratio:1;object-fit:cover}
@@ -306,9 +320,10 @@ nav button.active,nav button:hover{color:#fff}
 .letter-body{text-align:justify;white-space:pre-line}
 .letter-sign{margin-top:28px}
 .mini-row{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(16px,4vw,44px)}
-.mini{width:clamp(48px,8vw,62px);aspect-ratio:1;object-fit:cover;filter:grayscale(1);border:2px solid #ddd;box-shadow:0 4px 12px rgba(0,0,0,.45);transition:.25s;position:relative}
+.mini{width:clamp(48px,8vw,62px);aspect-ratio:1;object-fit:cover;filter:grayscale(1);border:2px solid #ddd;box-shadow:0 4px 12px rgba(0,0,0,.45);transition:.25s;position:relative;cursor:pointer}
 .mini:hover{filter:none;transform:scale(1.4) rotate(-4deg);z-index:5}
 
+/* ===== الصفحة ٣ ===== */
 #p3{background:var(--cream);color:var(--deep)}
 .gallery{max-width:1100px;margin:0 auto;padding:60px 6vw 70px;text-align:center}
 .g-title{font-family:'Amatic SC','Cairo',cursive;font-weight:700;font-size:clamp(44px,6vw,72px);line-height:1.1}
@@ -318,7 +333,7 @@ nav button.active,nav button:hover{color:#fff}
 .page.active .g-card{animation:cardIn .5s ease backwards;animation-delay:var(--d)}
 .g-card:hover{transform:rotate(0) scale(1.04);z-index:2}
 .g-card img{width:100%;aspect-ratio:4/5;object-fit:cover}
-.tape{position:absolute;top:-12px;left:50%;width:84px;height:24px;transform:translateX(-50%) rotate(-3deg);background:var(--accent);opacity:.7}
+.tape{position:absolute;top:-12px;left:50%;width:84px;height:24px;transform:translateX(-50%) rotate(-3deg);background:var(--accent);opacity:.7;z-index:1}
 .g-cap{display:block;margin-top:12px;font-family:'Caveat','Aref Ruqaa',cursive;font-size:21px;line-height:1.25;color:var(--ink)}
 .lightbox{position:fixed;inset:0;background:rgba(20,10,14,.88);display:flex;align-items:center;justify-content:center;padding:30px;z-index:80;opacity:0;pointer-events:none;transition:opacity .25s}
 .lightbox.on{opacity:1;pointer-events:auto}
@@ -327,16 +342,17 @@ nav button.active,nav button:hover{color:#fff}
 .lightbox img{width:100%;max-height:70vh;object-fit:contain}
 .lightbox figcaption{margin-top:12px;font-family:'Caveat','Aref Ruqaa',cursive;font-size:24px;color:var(--ink);text-align:center}
 
+/* ===== الصفحة ٤ ===== */
 #p4{background:var(--tint);color:var(--deep)}
 .reasons{max-width:980px;margin:0 auto;padding:56px 5vw 70px;text-align:center}
 .r-title{font-family:'Amatic SC','Cairo',cursive;font-weight:700;font-size:clamp(42px,6vw,70px);line-height:1.1}
 .r-sub{font-family:'Libre Baskerville','Amiri',serif;font-style:italic;font-size:14px;color:var(--ink-soft);margin:6px 0 34px}
-.r-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:14px}
-.rcard{position:relative;aspect-ratio:3/4;perspective:800px;background:none;border:none;padding:0}
+.r-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.rcard{position:relative;width:calc((100% - 70px) / 6);aspect-ratio:3/4;perspective:800px;background:none;border:none;padding:0}
 .page.active .rcard{animation:pop .4s ease backwards;animation-delay:var(--d)}
 .rinner{position:absolute;inset:0;transition:transform .4s cubic-bezier(.3,.7,.3,1.2);transform-style:preserve-3d}
 .rcard.flip .rinner{transform:rotateY(180deg)}
-.rface{position:absolute;inset:0;border-radius:12px;-webkit-backface-visibility:hidden;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px;box-shadow:0 8px 18px rgba(80,30,40,.2)}
+.rface{position:absolute;inset:0;border-radius:12px;-webkit-backface-visibility:hidden;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px;text-align:center;box-shadow:0 8px 18px rgba(80,30,40,.2)}
 .rfront{background:var(--main);color:#fff}
 .rfront b{font-family:'Fredoka','Poppins',sans-serif;font-weight:700;font-size:clamp(24px,3vw,32px);line-height:1}
 .rfront i{font-style:normal;font-size:14px;color:var(--accent);margin-top:4px}
@@ -345,12 +361,13 @@ nav button.active,nav button:hover{color:#fff}
 .r-done{min-height:1.4em;margin:6px 0 20px;font-family:'Caveat','Aref Ruqaa',cursive;font-size:clamp(28px,4vw,40px);opacity:0;transition:opacity .6s}
 .r-done.on{opacity:1}
 
-/* تصميم ناعم وأنيق لورقة الرسالة بدون خطوط مسطرة حادة */
+/* ===== الصفحة ٥ ===== */
 #p5{background:var(--dark)}
 .msg{min-height:calc(100vh - 44px);min-height:calc(100svh - 44px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;padding:60px 6vw}
+.msg .end-row{max-width:680px}
 .env-wrap{display:flex;flex-direction:column;align-items:center;gap:24px}
 .env-wrap.gone{display:none}
-.envelope{position:relative;width:min(340px,80vw);aspect-ratio:3/2;cursor:pointer;perspective:900px;animation:float 4s ease-in-out infinite}
+.envelope{position:relative;width:min(340px,80vw);aspect-ratio:3/2;cursor:pointer;perspective:900px;animation:float 4s ease-in-out infinite;-webkit-tap-highlight-color:transparent}
 .envelope.open{animation:none}
 .env-back{position:absolute;inset:0;background:var(--env1);border-radius:8px;box-shadow:0 22px 50px rgba(0,0,0,.45)}
 .env-paper{position:absolute;left:7%;right:7%;top:8%;height:82%;background:var(--paper);border-radius:4px;z-index:1;transition:transform .6s ease .3s}
@@ -362,7 +379,7 @@ nav button.active,nav button:hover{color:#fff}
 .envelope.open .env-paper{transform:translateY(-48%)}
 .env-hint{font-size:13px;color:#bdbdbd;letter-spacing:.5px}
 
-.paper{display:none;width:min(680px,92vw);background:var(--paper);color:var(--paper-ink);border-radius:18px;padding:46px 36px;box-shadow:0 20px 50px rgba(0,0,0,.5), inset 0 0 40px rgba(134,69,78,.05);border:1px solid rgba(225,200,205,.4);font-family:'Amiri',serif;font-size:clamp(18px,2.2vw,22px);line-height:2.1;direction:rtl;text-align:right}
+.paper{display:none;width:min(680px,92vw);background:var(--paper);color:var(--paper-ink);border-radius:18px;padding:46px 36px;box-shadow:0 20px 50px rgba(0,0,0,.5),inset 0 0 40px rgba(134,69,78,.05);border:1px solid rgba(225,200,205,.4);font-family:'Amiri',serif;font-size:clamp(18px,2.2vw,22px);line-height:2.1;direction:rtl;text-align:right}
 .paper.show{display:block;animation:paperIn .6s ease}
 .paper p{margin:0 0 20px;opacity:0;transform:translateY(8px);transition:opacity .6s ease,transform .6s ease}
 .paper p.in{opacity:1;transform:none}
@@ -370,9 +387,10 @@ nav button.active,nav button:hover{color:#fff}
 .paper .m-body{white-space:pre-line;text-align:justify}
 .paper .m-from{text-align:left;margin-top:30px;margin-bottom:0;font-weight:700;font-size:1.2em;color:var(--deep)}
 
-/* مشغل الفويس المطور باختيارات التقديم والتأخير */
+/* ===== الصفحة ٦ ===== */
 #p6{background:var(--darker)}
 .voice{min-height:calc(100vh - 44px);min-height:calc(100svh - 44px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:50px 6vw;text-align:center}
+.voice .end-row{max-width:700px}
 .voice h2{font-family:'Playfair Display','Amiri',serif;font-style:italic;font-weight:400;font-size:clamp(28px,4.2vw,46px);color:var(--tint-text)}
 .voice .sub{color:#a9a9a9;font-size:14px;margin-top:-12px}
 .record{position:relative;width:clamp(200px,30vw,270px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:repeating-radial-gradient(circle,#151515 0 2px,#1f1f1f 2px 4px);box-shadow:0 22px 50px rgba(0,0,0,.55),inset 0 0 0 6px #0d0d0d;animation:spin 7s linear infinite paused}
@@ -392,9 +410,10 @@ nav button.active,nav button:hover{color:#fff}
 .progress div{height:100%;width:0;background:var(--accent);transition:width .15s linear}
 .time{font-size:13px;color:#b0b0b0;margin-top:-10px}
 
+/* ===== الصفحة ٧ ===== */
 #p7{background:var(--main)}
-.songs{min-height:calc(100vh - 44px);min-height:calc(100svh - 44px);display:grid;grid-template-columns:minmax(200px,330px) 1fr;gap:6vw;align-items:center;padding:50px 6vw;max-width:1150px;margin:0 auto;overflow-y:auto}
-.songs-photo{position:relative}
+.songs{min-height:calc(100vh - 44px);min-height:calc(100svh - 44px);display:grid;grid-template-columns:minmax(200px,330px) 1fr;gap:6vw;align-items:start;padding:50px 6vw;max-width:1150px;margin:0 auto}
+.songs-photo{position:sticky;top:80px}
 .songs-photo img{width:100%;aspect-ratio:3/4;object-fit:cover;border:3px solid #2b2b2b;box-shadow:0 18px 40px rgba(0,0,0,.35)}
 .sq{position:absolute;width:7%;aspect-ratio:1;background:#9b59d9;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") center/contain no-repeat;animation:twinkle 3s ease-in-out infinite}
 .songs-head{display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap;margin-bottom:40px}
@@ -411,13 +430,14 @@ nav button.active,nav button:hover{color:#fff}
 .cover.playing .eq{display:flex}
 .eq i{width:3px;height:100%;background:#fff;transform-origin:bottom;animation:bar .8s ease-in-out infinite}
 .eq i:nth-child(2){animation-delay:.2s}.eq i:nth-child(3){animation-delay:.4s}
-.now{margin-top:30px;text-align:center;opacity:0;transition:opacity .3s}
+.now{position:sticky;bottom:14px;z-index:5;width:fit-content;max-width:100%;margin:30px auto 0;padding:10px 18px;border-radius:14px;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);text-align:center;opacity:0;pointer-events:none;transition:opacity .3s}
 .now.on{opacity:1}
 .now span{font-size:13px;color:var(--tint-text)}
-.now-bar{width:min(260px,70%);height:3px;margin:10px auto 0;background:rgba(255,255,255,.25);border-radius:3px;overflow:hidden}
+.now-bar{width:220px;max-width:100%;height:3px;margin:10px auto 0;background:rgba(255,255,255,.25);border-radius:3px;overflow:hidden}
 .now-bar div{height:100%;width:0;background:#fff}
 .songs .end-row{margin-top:24px}
 
+/* ===== الصفحة ٨ ===== */
 #p8{background:var(--cream);color:var(--deep)}
 .ask{min-height:calc(100vh - 44px);min-height:calc(100svh - 44px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:50px 6vw;text-align:center}
 .ask-img{width:clamp(170px,26vw,260px);aspect-ratio:1;object-fit:cover;border-radius:22px;border:6px solid #fff;box-shadow:0 14px 34px rgba(80,30,40,.22);transform:rotate(-2deg)}
@@ -432,1018 +452,937 @@ nav button.active,nav button:hover{color:#fff}
 .ask.done .ask-yes{display:flex;animation:rise .6s ease}
 .yes-msg{font-family:'Caveat','Aref Ruqaa',cursive;font-size:clamp(34px,5vw,54px)}
 
+/* ===== نافذة الفيديو ===== */
 .vmodal{position:fixed;inset:0;z-index:95;background:rgba(15,8,12,.88);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .25s}
 .vmodal.on{opacity:1;pointer-events:auto}
-.vbox{position:relative;max-width:min(560px,92vw);transform:scale(.95);transition:transform .25s}
-.vmodal.on .vbox{transform:none}
-.vbox video{display:block;max-width:100%;max-height:78vh;max-height:78svh;border-radius:18px;background:#000;box-shadow:0 25px 60px rgba(0,0,0,.6)}
-.vclose{position:absolute;top:-14px;right:-14px;width:40px;height:40px;border-radius:50%;border:none;background:#fff;color:#333;font-size:18px;box-shadow:0 6px 16px rgba(0,0,0,.4)}
+.vmodal video{max-width:min(520px,92vw);max-height:80vh;border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.5);background:#000}
+.vm-close{position:absolute;top:14px;right:16px;width:42px;height:42px;border-radius:50%;border:none;background:rgba(255,255,255,.14);color:#fff;font-size:24px;line-height:1}
 
-#p9{background:radial-gradient(ellipse at 50% 40%,var(--finale-bg) 0%,var(--darker) 70%)}
-.finale{min-height:calc(100vh - 44px);min-height:calc(100svh - 44px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:60px 6vw;text-align:center}
-.f-title{font-family:'Amatic SC','Cairo',cursive;font-weight:700;font-size:clamp(46px,7vw,80px);color:var(--tint);line-height:1.05}
-.f-hint{font-size:13px;color:#b9b9b9;transition:opacity .3s}
-.cake-wrap{position:relative;margin:30px 0 10px}
-.cake-wrap::before{content:"";position:absolute;left:50%;top:-40px;width:min(420px,100vw);height:300px;transform:translateX(-50%);background:radial-gradient(ellipse at 50% 30%,rgba(255,190,90,.28),transparent 65%);pointer-events:none;transition:opacity 1s}
-.cake-wrap.out::before{opacity:0}
-.cake{position:relative;width:min(290px,76vw);display:flex;flex-direction:column;align-items:center;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.candles{width:62%;height:76px;display:flex;justify-content:space-evenly;align-items:flex-end}
-.candles.nums{height:104px;justify-content:center;gap:4px}
-.candle{position:relative;width:10px;border-radius:3px 3px 0 0;background:repeating-linear-gradient(-45deg,var(--candle2) 0 6px,var(--candle) 6px 12px)}
-.candle::before{content:"";position:absolute;top:-7px;left:50%;width:2px;height:7px;margin-left:-1px;background:#3a3a3a}
-.candle.num{width:auto;background:none;border-radius:0}
-.candle.num .digit{display:block;font-family:'Fredoka','Poppins',sans-serif;font-weight:700;font-size:76px;line-height:.8;background:repeating-linear-gradient(-45deg,var(--candle2) 0 7px,var(--candle) 7px 14px);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 3px 4px rgba(0,0,0,.4))}
-.flame{position:absolute;bottom:calc(100% + 5px);left:50%;width:12px;height:24px;margin-left:-6px;border-radius:50% 50% 45% 45%/60% 60% 40% 40%;background:radial-gradient(ellipse at 50% 72%,#fffbe0 0 18%,#ffd45c 38%,#ff9a3c 66%,rgba(255,120,40,0) 72%);filter:drop-shadow(0 0 8px rgba(255,190,80,.9));transform-origin:50% 100%;animation:flicker .14s ease-in-out infinite alternate;transition:opacity .3s,transform .3s}
-.candle.num .flame{width:14px;height:28px;margin-left:-7px}
-.smoke{position:absolute;bottom:calc(100% + 8px);left:50%;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:rgba(225,225,225,.55);opacity:0;pointer-events:none}
-.candle.out .flame{opacity:0;transform:scale(.2);animation:none}
-.candle.out .smoke{animation:smoke 1.5s ease-out forwards}
-.tier{position:relative;border-radius:12px 12px 6px 6px}
-.tier.top{width:62%;height:64px;background:var(--tint);--icing:#fff}
-.tier.bottom{width:100%;height:88px;background:var(--main);--icing:var(--tint)}
-.tier::before{content:"";position:absolute;left:0;right:0;top:0;height:14px;background:var(--icing);border-radius:12px 12px 0 0}
-.tier::after{content:"";position:absolute;left:0;right:0;top:13px;height:13px;background:radial-gradient(circle at 50% 0,var(--icing) 8px,transparent 9px) 0 0/18px 13px repeat-x}
-.tier .dots{position:absolute;left:8%;right:8%;bottom:16px;height:10px;background:radial-gradient(circle,var(--tint) 3px,transparent 4px) 0 0/22px 10px repeat-x}
-.cake.purple .tier.top{background:#ece0f8;--icing:#fff}
-.cake.purple .tier.bottom{background:#6a4c93;--icing:#ece0f8}
-.cake.purple .tier .dots{background:radial-gradient(circle,#ece0f8 3px,transparent 4px) 0 0/22px 10px repeat-x}
-.plate{width:118%;height:16px;margin-top:-4px;border-radius:50%;background:var(--plate);box-shadow:0 14px 30px rgba(0,0,0,.45)}
-.f-final{font-family:'Caveat','Aref Ruqaa',cursive;font-size:clamp(26px,3.6vw,36px);color:var(--tint-text);max-width:560px;line-height:1.3;opacity:0;transform:translateY(12px);transition:opacity 1s ease .4s,transform 1s ease .4s}
-.f-again{color:#eee;opacity:0;pointer-events:none;transition:opacity .8s ease 1.2s}
+/* ===== الصفحة ٩ ===== */
+#p9{background:var(--finale-bg)}
+.finale{min-height:calc(100vh - 44px);min-height:calc(100svh - 44px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:50px 6vw 60px;text-align:center}
+.finale h2{font-family:'Caveat','Aref Ruqaa',cursive;font-weight:600;font-size:clamp(40px,6vw,64px);line-height:1.05;color:var(--tint-text)}
+.cake{width:min(340px,82vw);cursor:pointer;-webkit-tap-highlight-color:transparent;filter:drop-shadow(0 18px 28px rgba(0,0,0,.35));--cake-body:#f6dccb;--cake-body2:#fbe9de;--cake-frost:var(--accent);--cake-deco:var(--soft)}
+.cake.purple{--cake-body:#e7daf6;--cake-body2:#f3ebfc;--cake-frost:#c9a8f0;--cake-deco:#9b59d9}
+.cake svg{display:block;width:100%;height:auto;overflow:visible}
+.ck-plate{fill:var(--plate)}.ck-body{fill:var(--cake-body)}.ck-body2{fill:var(--cake-body2)}.ck-frost{fill:var(--cake-frost)}.ck-deco{fill:var(--cake-deco)}
+.flame{transform-box:fill-box;transform-origin:50% 100%;animation:flicker .8s ease-in-out infinite alternate;transition:opacity .3s,transform .3s}
+.candle.out .flame{animation:none;opacity:0;transform:scale(.2)}
+.smoke{opacity:0;transform-box:fill-box;transform-origin:50% 100%}
+.candle.out .smoke{animation:smoke 1.4s ease-out forwards}
+.blow-hint{font-size:13px;color:#d8c8cb;letter-spacing:.5px}
+.finale.blown .blow-hint{display:none}
+.finale-after{display:none;flex-direction:column;align-items:center;gap:18px;max-width:560px}
+.finale.blown .finale-after{display:flex;animation:rise .7s ease}
+.finale-text{font-family:'Libre Baskerville','Amiri',serif;font-style:italic;font-size:clamp(16px,1.8vw,19px);line-height:1.8;color:#f3e6e8}
+.wish-hint{font-size:14px;color:var(--accent)}
+.wish-box{width:min(460px,88vw);display:flex;flex-direction:column;align-items:center;gap:12px}
+.wish-box textarea{width:100%;min-height:110px;resize:vertical;border-radius:16px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.07);color:#fff;padding:14px 16px;font:inherit;font-size:15px;line-height:1.6;outline:none}
+.wish-box textarea:focus{border-color:var(--accent)}
+.wish-box textarea::placeholder{color:#b9a9ad}
+.wish-btn{border:none;border-radius:999px;background:#fff;color:var(--deep);padding:11px 26px;font-size:15px;box-shadow:0 10px 24px rgba(0,0,0,.3);transition:transform .2s}
+.wish-btn:hover{transform:scale(1.05)}
+.wish-done{font-family:'Caveat','Aref Ruqaa',cursive;font-size:30px;color:var(--tint-text)}
+.shake{animation:shake .4s}
 
-/* إرسال الجيميل المباشر - حركة فورية وسريعة جداً */
-.wish{display:flex;flex-direction:column;align-items:center;gap:12px;width:min(460px,88vw);margin-top:14px;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .8s ease 1s,transform .8s ease 1s}
-.finale.done .wish{opacity:1;pointer-events:auto;transform:none}
-.finale.done .f-final{opacity:1;transform:none}
-.finale.done .f-again{opacity:1;pointer-events:auto}
-.finale.done .f-hint{opacity:0}
+/* ===== زرار المزيكا والكونفيتي ===== */
+.music-btn{position:fixed;right:16px;bottom:16px;z-index:60;width:44px;height:44px;border-radius:50%;border:none;background:var(--main);color:#fff;font-size:18px;box-shadow:0 8px 20px rgba(0,0,0,.35);display:grid;place-items:center;transition:opacity .2s}
+.music-btn.off{opacity:.55}
+.music-btn.off::after{content:"";position:absolute;width:26px;height:2px;background:#fff;transform:rotate(-45deg)}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:90;overflow:hidden}
+.confetti i{position:absolute;top:-24px;border-radius:2px;animation:fall var(--t) linear var(--dl) forwards}
 
-.wish-hint{font-family:'Caveat','Aref Ruqaa',cursive;font-size:24px;color:var(--tint);transition:opacity .3s}
-.wish-paper{width:100%;background:var(--paper);border-radius:12px;padding:16px 18px;box-shadow:0 15px 35px rgba(0,0,0,.45);border:1px solid var(--paper-line)}
-.wish-paper textarea{display:block;width:100%;border:none;outline:none;resize:none;background:transparent;font-family:'Caveat','Aref Ruqaa',cursive;font-size:24px;line-height:1.4;color:var(--paper-ink)}
-.wish-btn{color:#eee;transition:opacity .3s;margin-top:6px}
-.wish.sent .wish-paper{animation:wishFly 1.4s ease-in forwards}
-.wish.sent .wish-btn,.wish.sent .wish-hint{opacity:0;pointer-events:none}
-.wish-done{min-height:1.3em;font-family:'Caveat','Aref Ruqaa',cursive;font-size:clamp(24px,3.4vw,32px);color:var(--accent);opacity:0;transition:opacity .8s}
-.wish-done.on{opacity:1}
-.wstar{position:fixed;width:12px;height:12px;margin:-6px 0 0 -6px;pointer-events:none;z-index:102;clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);animation:wstar 1.4s ease-out forwards}
-
-#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:101}
-#musicBtn{position:fixed;right:18px;bottom:18px;width:46px;height:46px;border-radius:50%;border:none;background:rgba(255,255,255,.92);color:var(--deep);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.3);z-index:60;transition:transform .2s,opacity .2s}
-#musicBtn:hover{transform:scale(1.08)}
-#musicBtn.off{opacity:.55}
-#musicBtn svg{width:20px;height:20px;fill:currentColor}
-#toast{position:fixed;left:50%;bottom:80px;transform:translate(-50%,20px);background:#111;color:#fff;padding:10px 18px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:98}
-#toast.show{opacity:1;transform:translate(-50%,0)}
-
+/* ===== الأنيميشن ===== */
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes wiggle{0%,100%{transform:rotate(18deg)}50%{transform:rotate(28deg)}}
-@keyframes morph{0%,100%{border-radius:43% 57% 52% 48%/45% 42% 58% 55%;transform:rotate(0)}33%{border-radius:58% 42% 45% 55%/55% 58% 42% 45%;transform:rotate(6deg)}66%{border-radius:48% 52% 60% 40%/40% 52% 48% 60%;transform:rotate(-5deg)}}
-@keyframes twinkle{0%,100%{transform:scale(.8);opacity:.6}50%{transform:scale(1.15);opacity:1}}
-@keyframes drop{from{opacity:0;transform:translateY(-30px) rotate(var(--r)) scale(1.05)}to{opacity:1;transform:rotate(var(--r))}}
-@keyframes cardIn{from{opacity:0;transform:translateY(20px) rotate(var(--r))}to{opacity:1;transform:rotate(var(--r))}}
-@keyframes paperIn{from{opacity:0;transform:translateY(30px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes wiggle{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(8deg)}}
+@keyframes morph{0%,100%{border-radius:43% 57% 52% 48%/45% 42% 58% 55%}33%{border-radius:58% 42% 45% 55%/52% 60% 40% 48%}66%{border-radius:48% 52% 60% 40%/40% 48% 52% 60%}}
+@keyframes twinkle{0%,100%{opacity:.35;transform:scale(.8)}50%{opacity:1;transform:scale(1.1)}}
+@keyframes drop{from{opacity:0;transform:translateY(-40px) rotate(0)}to{opacity:1;transform:rotate(var(--r))}}
+@keyframes cardIn{from{opacity:0;transform:translateY(24px) rotate(0)}to{opacity:1;transform:rotate(var(--r))}}
+@keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
+@keyframes paperIn{from{opacity:0;transform:translateY(30px) scale(.97)}to{opacity:1;transform:none}}
 @keyframes spin{to{transform:rotate(360deg)}}
-@keyframes bar{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
-@keyframes pop{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:none}}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-@keyframes flicker{from{transform:scaleY(1) rotate(-2deg)}to{transform:scaleY(1.12) rotate(2deg)}}
-@keyframes smoke{0%{opacity:.7;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-40px) scale(2.5)}}
-@keyframes wishFly{0%{transform:none;opacity:1}30%{transform:scale(.35,.2) rotate(-8deg);opacity:1}100%{transform:translateY(-70vh) scale(.12) rotate(25deg);opacity:0}}
-@keyframes wstar{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--sx),var(--sy)) scale(.3)}}
+@keyframes bar{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(1)}}
+@keyframes flicker{0%{transform:scale(1,1) rotate(-3deg)}100%{transform:scale(.9,1.12) rotate(3deg)}}
+@keyframes smoke{0%{opacity:.7;transform:translateY(0) scale(.6)}100%{opacity:0;transform:translateY(-30px) scale(1.6)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(var(--rot))}}
 
-@media (max-width:760px){
-  nav{gap:14px;padding:0 10px;justify-content:center}
-  nav button{font-size:0}
-  nav button::after{content:attr(data-num);font-size:13px}
-  .hero{flex-direction:column;justify-content:center}
-  .hero-title{align-items:center;text-align:center}
-  .hero-title span{padding-inline-start:0!important}
-  .sec{padding:60px 5vw}
-  .traits{grid-template-columns:1fr 1fr;row-gap:44px}
-  .blob-wrap{grid-column:1/-1;order:-1;justify-self:center}
-  .trait-col,.trait-col.left{align-items:center}
-  .trait{left:0!important;right:0!important}
-  .memories{grid-template-columns:1fr;gap:40px}
-  .letter-inner{padding:22px 20px;font-size:14px}
-  .g-grid{grid-template-columns:repeat(2,1fr);gap:34px 18px}
-  .g-cap{font-size:18px}
-  .r-grid{grid-template-columns:repeat(3,1fr);gap:12px}
-  .rback{font-size:16px}
-  .paper{padding:32px 20px;font-size:18px;line-height:2.0}
-  .songs{grid-template-columns:1fr;gap:36px}
-  .songs-photo{max-width:180px;margin:0 auto}
+/* ===== الموبايل ===== */
+@media (max-width:820px){
+  .traits{grid-template-columns:1fr 1fr;grid-template-areas:"pic pic" "l r";gap:36px 18px}
+  .blob-wrap{grid-area:pic;justify-self:center}
+  .trait-col{grid-area:r;align-items:center;gap:18px}
+  .trait-col.left{grid-area:l;align-items:center}
+  .trait{text-align:center}
+  .trait::after{display:none}
+  .memories{grid-template-columns:1fr;gap:44px}
+  .songs{grid-template-columns:1fr;gap:30px}
+  .songs-photo{position:relative;top:auto;width:min(250px,70vw);margin:0 auto}
   .songs-head{justify-content:center;margin-bottom:28px}
-  .covers{gap:22px 20px}
-  .cover{width:84px}
-  .candle.num .digit{font-size:66px}
-  .vclose{top:-12px;right:-6px}
+  .r-grid{gap:12px}
+  .rcard{width:calc((100% - 36px) / 4)}
+}
+@media (max-width:700px){
+  nav{justify-content:flex-start;gap:18px;padding:0 14px;overflow-x:auto;scrollbar-width:none}
+  nav::-webkit-scrollbar{display:none}
+  nav button{flex:0 0 auto}
+}
+@media (max-width:520px){
+  .sec{padding:56px 6vw}
+  .g-grid{grid-template-columns:repeat(2,1fr);gap:30px 16px}
+  .g-cap{font-size:17px}
+  .letter-inner{padding:22px 18px}
+  .paper{padding:34px 22px}
+  .r-grid{gap:10px}
+  .rcard{width:calc((100% - 20px) / 3)}
+  .ask-btns{gap:14px}
 }
 </style>
 </head>
 <body>
 
+<!-- شاشة البداية -->
 <div class="gate" id="gate">
   <div class="gate-box">
-    <p class="gate-kicker" id="gateKicker"></p>
-    <h1 class="gate-title" id="gateTitle" dir="auto"></h1>
-    <p class="gate-sub" id="gateSub" dir="auto"></p>
-    <div class="gate-count" id="gateCount"></div>
-    <p class="gate-note" id="gateNote" dir="auto"></p>
-    <div class="gate-stats" id="gateStats"></div>
-    <button class="gate-btn" id="gateBtn" hidden></button>
+    <p class="gate-kicker" id="gKicker"></p>
+    <h1 class="gate-title" id="gTitle"></h1>
+    <p class="gate-sub" id="gSub"></p>
+    <div class="gate-count" id="gCount" hidden>
+      <div class="cd-b"><b id="cdD">0</b><span>days</span></div>
+      <div class="cd-b"><b id="cdH">00</b><span>hours</span></div>
+      <div class="cd-b"><b id="cdM">00</b><span>mins</span></div>
+      <div class="cd-b"><b id="cdS">00</b><span>secs</span></div>
+    </div>
+    <div class="gate-stats" id="gStats"></div>
+    <button class="gate-btn" id="gBtn" hidden></button>
   </div>
 </div>
 
 <nav id="nav"></nav>
 
-<section class="page active" id="p1">
+<!-- الصفحة ١ -->
+<section class="page" id="p1">
   <div class="hero">
-    <h1 class="hero-title" id="heroTitle" dir="auto"></h1>
+    <h1 class="hero-title" id="heroTitle"></h1>
     <div class="hero-pic">
       <div class="face-wrap">
         <img class="face" id="babyImg" alt="">
-        <svg class="hat" id="hat" viewBox="0 0 100 140" aria-hidden="true">
-          <defs><clipPath id="cone"><path d="M50 12 L92 128 Q50 140 8 128 Z"/></clipPath></defs>
-          <path d="M50 12 L92 128 Q50 140 8 128 Z" fill="#fff" stroke="#e3dada" stroke-width="2"/>
-          <g clip-path="url(#cone)" class="hat-dots">
-            <circle cx="50" cy="34" r="5"/><circle cx="38" cy="56" r="5.5"/><circle cx="60" cy="58" r="5.5"/>
-            <circle cx="28" cy="82" r="6"/><circle cx="50" cy="80" r="6"/><circle cx="72" cy="84" r="6"/>
-            <circle cx="18" cy="108" r="6"/><circle cx="40" cy="104" r="6"/><circle cx="62" cy="106" r="6"/><circle cx="84" cy="112" r="6"/>
-            <circle cx="30" cy="128" r="6"/><circle cx="72" cy="130" r="6"/>
+        <svg class="hat" id="hat" viewBox="0 0 100 124" aria-hidden="true">
+          <defs><clipPath id="hatClip"><path d="M50 10 L88 112 Q50 122 12 112 Z"/></clipPath></defs>
+          <path d="M50 10 L88 112 Q50 122 12 112 Z" fill="#fff"/>
+          <g clip-path="url(#hatClip)" class="hat-lines" stroke-width="6" fill="none">
+            <path d="M0 52 L100 32"/><path d="M0 82 L100 62"/><path d="M0 112 L100 92"/>
           </g>
-          <g class="hat-lines" stroke-width="2" fill="none" stroke-linecap="round">
-            <path d="M50 12 q-10 -8 -6 -11"/><path d="M50 12 q6 -9 12 -8"/><path d="M50 12 q-2 -9 2 -11"/>
-          </g>
+          <g class="hat-dots"><circle cx="44" cy="62" r="3.5"/><circle cx="58" cy="76" r="3.5"/><circle cx="38" cy="96" r="3.5"/><circle cx="66" cy="104" r="3"/></g>
+          <path d="M50 10 L88 112 Q50 122 12 112 Z" fill="none" stroke="#2b2b2b" stroke-width="3" stroke-linejoin="round"/>
+          <circle class="hat-dots" cx="50" cy="10" r="9"/>
         </svg>
       </div>
-      <button class="pill" id="openBtn" data-go="2" data-label="open">open me</button>
+      <button class="pill" data-next></button>
     </div>
   </div>
 </section>
 
+<!-- الصفحة ٢ -->
 <section class="page" id="p2">
-  <div class="sec observe">
+  <div class="sec">
     <div class="traits">
       <div class="trait-col left" id="traitsL"></div>
-      <div class="blob-wrap" id="blobWrap"><div class="blob"></div><img id="mainImg" alt=""></div>
+      <div class="blob-wrap">
+        <div class="blob"></div>
+        <img id="mainImg" alt="">
+        <svg class="spark" viewBox="0 0 24 24" style="top:0;left:6%"><path d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z"/></svg>
+        <svg class="spark" viewBox="0 0 24 24" style="top:12%;right:-2%;animation-delay:.6s"><path d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z"/></svg>
+        <svg class="spark" viewBox="0 0 24 24" style="bottom:4%;left:-3%;animation-delay:1.2s"><path d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z"/></svg>
+        <svg class="spark" viewBox="0 0 24 24" style="bottom:-2%;right:14%;animation-delay:1.8s"><path d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z"/></svg>
+      </div>
       <div class="trait-col" id="traitsR"></div>
     </div>
   </div>
-  <div class="sec observe">
+  <div class="sec">
     <div class="memories">
-      <p class="reveal" id="revealText" dir="auto"></p>
+      <p class="reveal" id="reveal"></p>
       <div class="collage" id="collage"></div>
     </div>
   </div>
-  <div class="sec observe">
+  <div class="sec">
     <div class="letter-wrap">
-      <div class="letter"><div class="letter-inner" dir="auto">
-        <p class="letter-title" id="letterTitle"></p>
-        <p class="letter-body" id="letterBody"></p>
-        <p class="letter-sign" id="letterSign"></p>
-      </div></div>
+      <div class="letter">
+        <div class="letter-inner">
+          <p class="letter-title" id="letterTitle"></p>
+          <p class="letter-body" id="letterBody"></p>
+          <p class="letter-sign" id="letterSign"></p>
+        </div>
+      </div>
       <div class="mini-row" id="miniRow"></div>
-      <div class="end-row"><button class="pill" data-go="3" data-label="next">next</button></div>
+      <div class="end-row"><button class="pill" data-next></button></div>
     </div>
   </div>
 </section>
 
+<!-- الصفحة ٣ -->
 <section class="page" id="p3">
   <div class="gallery">
-    <h2 class="g-title" id="galleryTitle" dir="auto"></h2>
-    <p class="g-sub" id="gallerySub" dir="auto"></p>
+    <h2 class="g-title" id="galTitle"></h2>
+    <p class="g-sub" id="galSub"></p>
     <div class="g-grid" id="gGrid"></div>
-    <div class="end-row"><button class="pill" data-go="4" data-label="next">next</button></div>
+    <div class="end-row"><button class="pill" data-next></button></div>
   </div>
 </section>
 
+<!-- الصفحة ٤ -->
 <section class="page" id="p4">
   <div class="reasons">
-    <h2 class="r-title" id="reasonsTitle" dir="auto"></h2>
-    <p class="r-sub" id="reasonsSub" dir="auto"></p>
+    <h2 class="r-title" id="rTitle"></h2>
+    <p class="r-sub" id="rSub"></p>
     <div class="r-grid" id="rGrid"></div>
     <p class="r-count" id="rCount"></p>
-    <p class="r-done" id="rDone" dir="auto"></p>
-    <div class="end-row"><button class="pill" data-go="5" data-label="next">next</button></div>
+    <p class="r-done" id="rDone"></p>
+    <div class="end-row"><button class="pill" data-next></button></div>
   </div>
 </section>
 
+<!-- الصفحة ٥ -->
 <section class="page" id="p5">
   <div class="msg">
     <div class="env-wrap" id="envWrap">
-      <div class="envelope" id="envelope">
+      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="open the letter">
         <div class="env-back"></div>
         <div class="env-paper"></div>
         <div class="env-front"></div>
         <div class="env-flap"></div>
-        <div class="env-seal">&#10084;</div>
+        <div class="env-seal">♥</div>
       </div>
-      <p class="env-hint" data-label="tapToOpen">tap to open</p>
+      <p class="env-hint" id="envHint"></p>
     </div>
-    <div class="paper" id="paper" dir="rtl"></div>
-    <div class="end-row"><button class="pill" data-go="6" data-label="next">next</button></div>
+    <div class="paper" id="paper">
+      <p class="m-to" id="mTo"></p>
+      <p class="m-body" id="mBody"></p>
+      <p class="m-from" id="mFrom"></p>
+    </div>
+    <div class="end-row" id="p5end" hidden><button class="pill" data-next></button></div>
   </div>
 </section>
 
+<!-- الصفحة ٦ -->
 <section class="page" id="p6">
   <div class="voice">
-    <h2 id="voiceTitle" dir="auto"></h2>
-    <p class="sub" id="voiceSub" dir="auto"></p>
-    <div class="record" id="record"><img id="voiceImg" alt=""></div>
+    <h2 id="vTitle"></h2>
+    <p class="sub" id="vSub"></p>
+    <div class="record" id="record"><img id="vPhoto" alt=""></div>
+    <div class="wave" id="wave"></div>
     <div class="vctrl">
-      <button class="seek-btn" id="rewindBtn" aria-label="rewind 10 seconds">-10s</button>
-      <div class="wave" id="waveL"></div>
-      <button class="play-btn" id="voiceBtn" aria-label="play voice note"></button>
-      <div class="wave" id="waveR"></div>
-      <button class="seek-btn" id="forwardBtn" aria-label="forward 10 seconds">+10s</button>
+      <button class="seek-btn" id="vBack" aria-label="back 10 seconds">-10</button>
+      <button class="play-btn" id="vPlay" aria-label="play"></button>
+      <button class="seek-btn" id="vFwd" aria-label="forward 10 seconds">+10</button>
     </div>
-    <div class="progress" id="vProg"><div id="vBar"></div></div>
-    <div class="time" id="vTime">0:00 / 0:00</div>
-    <button class="pill" data-go="7" data-label="next">next</button>
+    <div class="progress" id="vProg"><div></div></div>
+    <p class="time" id="vTime">0:00</p>
+    <div class="end-row"><button class="pill" data-next></button></div>
   </div>
 </section>
 
+<!-- الصفحة ٧ -->
 <section class="page" id="p7">
   <div class="songs">
-    <div class="songs-photo" id="songsPhoto"><img id="songsImg" alt=""></div>
-    <div>
-      <div class="songs-head"><h2 id="songsTitle"></h2><span id="songsSub"></span></div>
+    <div class="songs-photo">
+      <img id="sPhoto" alt="">
+      <span class="sq" style="top:-4%;left:-5%"></span>
+      <span class="sq" style="top:18%;right:-6%;animation-delay:.6s"></span>
+      <span class="sq" style="bottom:12%;left:-7%;width:5%;animation-delay:1.2s"></span>
+      <span class="sq" style="bottom:-3%;right:10%;animation-delay:1.8s"></span>
+    </div>
+    <div class="songs-list">
+      <div class="songs-head"><h2 id="sTitle"></h2><span id="sSub"></span></div>
       <div class="covers" id="covers"></div>
-      <div class="now" id="now"><span id="nowText"></span><div class="now-bar"><div id="nowBar"></div></div></div>
-      <div class="end-row"><button class="pill" data-go="8" data-label="next">next</button></div>
+      <div class="now" id="now"><span id="nowTxt"></span><div class="now-bar"><div id="nowBar"></div></div></div>
+      <div class="end-row"><button class="pill" data-next></button></div>
     </div>
   </div>
 </section>
 
+<!-- الصفحة ٨ -->
 <section class="page" id="p8">
   <div class="ask" id="ask">
     <img class="ask-img" id="askImg" alt="">
-    <h2 class="ask-q" id="askQ" dir="auto"></h2>
+    <h2 class="ask-q" id="askQ"></h2>
     <div class="ask-btns">
-      <button class="yes-btn" id="yesBtn" data-label="yes">yes</button>
-      <button class="no-btn" id="noBtn" data-label="no">no</button>
+      <button class="yes-btn" id="yesBtn"></button>
+      <button class="no-btn" id="noBtn"></button>
     </div>
     <div class="ask-yes">
-      <p class="yes-msg" id="yesMsg" dir="auto"></p>
-      <button class="pill" data-go="9" data-label="next">next</button>
+      <p class="yes-msg" id="yesMsg"></p>
+      <button class="pill" data-next></button>
     </div>
   </div>
 </section>
 
+<!-- الصفحة ٩ -->
 <section class="page" id="p9">
   <div class="finale" id="finale">
-    <h2 class="f-title" id="finaleTitle" dir="auto"></h2>
-    <p class="f-hint" data-label="blowHint">tap the cake to blow out the candles</p>
-    <div class="cake-wrap" id="cakeWrap">
-      <div class="cake" id="cake" role="button" aria-label="blow out the candles">
-        <div class="candles" id="candles"></div>
-        <div class="tier top"></div>
-        <div class="tier bottom"><span class="dots"></span></div>
-        <div class="plate"></div>
+    <h2 id="fTitle"></h2>
+    <div class="cake" id="cake" role="button" tabindex="0" aria-label="blow out the candles"></div>
+    <p class="blow-hint" id="blowHint"></p>
+    <div class="finale-after">
+      <p class="finale-text" id="fText"></p>
+      <p class="wish-hint" id="wishHint"></p>
+      <div class="wish-box">
+        <textarea id="wishTa" dir="auto" rows="4"></textarea>
+        <button class="wish-btn" id="wishBtn"></button>
+        <p class="wish-done" id="wishDone" hidden></p>
       </div>
+      <button class="pill" id="againBtn"></button>
     </div>
-    <p class="f-final" id="finaleText" dir="auto"></p>
-    
-    <!-- الجواب ورسالة الأمنية للإيميل -->
-    <div class="wish" id="wish">
-      <p class="wish-hint" id="wishHint" dir="auto"></p>
-      <div class="wish-paper" id="wishPaper">
-        <textarea id="wishText" rows="4" maxlength="500" dir="auto"></textarea>
-      </div>
-      <button class="pill wish-btn" id="wishBtn"></button>
-      <p class="wish-done" id="wishDone" dir="auto"></p>
-    </div>
-
-    <button class="pill f-again" data-go="1" data-label="again">start again</button>
   </div>
 </section>
 
-<div class="lightbox" id="lightbox"><figure><img id="lbImg" alt=""><figcaption id="lbCap" dir="auto"></figcaption></figure></div>
-<div class="vmodal" id="vmodal">
-  <div class="vbox">
-    <video id="vplayer" playsinline controls preload="none"></video>
-    <button class="vclose" id="vclose" aria-label="close">&#10005;</button>
-  </div>
-</div>
-<canvas id="confetti"></canvas>
-<button id="musicBtn" aria-label="music on/off"></button>
-<div id="toast"></div>
-<audio id="bg" loop preload="none" playsinline></audio>
+<div class="lightbox" id="lb"><figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure></div>
+<div class="vmodal" id="vm"><button class="vm-close" id="vmClose" aria-label="close">×</button><video id="vmVideo" playsinline controls preload="none"></video></div>
+<button class="music-btn" id="musicBtn" hidden aria-label="music">♪</button>
 
 <script>
-let CONFIG_OK = false;
-try { CONFIG_OK = typeof CONFIG !== 'undefined'; } catch (e) { CONFIG_OK = false; }
+(function () {
+  "use strict";
+  const C = CONFIG, T = C.texts || {};
+  const $ = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
+  const el = (tag, cls, txt) => {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (txt != null) e.textContent = txt;
+    return e;
+  };
+  const pad = n => String(n).padStart(2, "0");
+  const fmt = s => { s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ":" + pad(s % 60); };
 
-const DEFAULTS = {
-  tabTitle: 'Happy Birthday', navLabels: [],
-  birthDate: '2005-10-28', unlockAt: '',
-  gateLockedKicker: 'not yet…', gateLockedTitle: 'something is waiting for you, ' + (typeof NAME !== 'undefined' ? NAME : 'Jana'),
-  gateLockedSub: 'your gift opens in', gateLockedNote: 'come back at midnight 🤍',
-  gateOpenKicker: "it's your day", gateOpenTitle: "you're officially {age} 🎉",
-  gateOpenSub: "and you've been {age} for", gateBtnText: 'open your gift 🎁',
-  gateLabels: ['days', 'hours', 'min', 'sec'],
-  gateStatDays: 'days of being you', gateStatHours: 'hours of making the world prettier', gateStatBeats: 'heartbeats',
-  galleryTitle: 'a few of my favorite pictures of you', gallerySubtitle: '', gallery: [],
-  reasonsTitle: '21 reasons why I love you', reasonsSubtitle: 'tap every card', reasonsDone: 'and a million more 💜',
-  reasons: [],
-  messageTo: '', message: '', messageFrom: '',
-  voiceNote: 'voice.mp3', voicePhoto: 'voice-photo.jpg',
-  loveQuestion: 'do you still love me?',
-  yesText: 'I knew it 💜',
-  noTexts: ['are you sure?', 'really? 🥺', 'think again', 'wrong button', "you can't catch me 😜"],
-  noGiveUpText: 'ok fine… press me 😒',
-  onlyYesText: "now there's only one answer 😌",
-  noDodges: 6,
-  askPhoto: '', noVideo: '', yesVideo: '',
-  finaleTitle: 'make a wish', age: '', candles: 5, candleColor: '', candleColor2: '', cakePurple: false, finaleText: '',
-  wishHint: 'now make a wish, and let it fly ✨',
-  wishHintShared: "now make a wish, and let it fly ✨",
-  wishPlaceholder: 'Write your wish or message here... ✨',
-  wishBtnText: 'send it to the stars ✨',
-  wishDoneText: 'your wish is on its way 💫',
-  wishEmail: 'ameersaeed010@gmail.com'
-};
+  document.title = C.tabTitle || document.title;
 
-if (CONFIG_OK) {
-  for (const k in DEFAULTS) if (CONFIG[k] === undefined) CONFIG[k] = DEFAULTS[k];
-}
+  /* صورة بديلة لو صورة مش موجودة */
+  const PH = "data:image/svg+xml;utf8," + encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' fill='#ece4e6'/><path transform='translate(6 6.5) scale(.5)' fill='#cfb3b9' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>");
+  document.addEventListener("error", e => {
+    const t = e.target;
+    if (t && t.tagName === "IMG" && !t.dataset.ph) { t.dataset.ph = "1"; t.src = PH; }
+  }, true);
+  const setImg = (im, src) => { delete im.dataset.ph; im.src = src || PH; };
+  const img = (src, cls, alt) => {
+    const i = el("img", cls);
+    i.alt = alt || "";
+    i.loading = "lazy";
+    i.decoding = "async";
+    setImg(i, src);
+    return i;
+  };
 
-const $ = id => document.getElementById(id);
-const PAGES = document.querySelectorAll('.page').length;
-const TX = Object.assign({
-  open: 'open me', next: 'next', nowPlaying: 'now playing', tapToOpen: 'tap to open',
-  blowHint: 'tap the cake to blow out the candles', again: 'start again', yes: 'yes', no: 'no'
-}, (typeof CONFIG !== 'undefined' && CONFIG.texts) || {});
-
-document.title = (typeof CONFIG !== 'undefined' && CONFIG.tabTitle) || 'Happy Birthday';
-document.querySelectorAll('[data-label]').forEach(el => { if (TX[el.dataset.label]) el.textContent = TX[el.dataset.label]; });
-
-function ph(label){
-  return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(
-    <svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><rect width="400" height="400" fill="#d8cdcd"/><text x="200" y="210" font-family="sans-serif" font-size="28" fill="#86454e" text-anchor="middle">${label}</text></svg>);
-}
-function pic(src, label, cls = ''){
-  return <img src="${src}" class="${cls}" alt="" loading="lazy" onerror="this.onerror=null;this.src=ph('${label}')">;
-}
-function setImg(el, src, label){
-  if (!el) return;
-  el.onerror = () => { el.onerror = null; el.src = ph(label); };
-  el.src = src;
-}
-function fmt(s){ s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
-let toastTimer;
-function toast(msg){
-  const t = $('toast'); if (!t) return;
-  t.textContent = msg; t.classList.add('show');
-  clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
-}
-function fadeTo(a, target, ms, done){
-  clearInterval(a._fade);
-  const from = a.volume, steps = 15; let i = 0;
-  a._fade = setInterval(() => {
-    i++;
-    a.volume = Math.min(1, Math.max(0, from + (target - from) * i / steps));
-    if (i >= steps){ clearInterval(a._fade); if (done) done(); }
-  }, Math.max(10, ms / steps));
-}
-
-const cv = $('confetti'), cx = cv ? cv.getContext('2d') : null;
-let parts = [], confRAF = null;
-function resizeCv(){
-  if (!cv) return;
-  const d = window.devicePixelRatio || 1;
-  cv.width = innerWidth * d; cv.height = innerHeight * d;
-  cx.setTransform(d, 0, 0, d, 0, 0);
-}
-addEventListener('resize', resizeCv); resizeCv();
-const rootStyle = getComputedStyle(document.documentElement);
-const CCOLORS = ['--accent', '--soft', '--main', '--tint'].map(v => rootStyle.getPropertyValue(v).trim()).concat(['#e8c547', '#ffffff']);
-const CAKE_COLORS = CCOLORS.concat([CONFIG.candleColor, CONFIG.candleColor2, CONFIG.candleColor].filter(Boolean));
-function confetti(x, y, n = 100, colors = CCOLORS){
-  if (!cx) return;
-  for (let i = 0; i < n; i++){
-    const a = Math.random() * Math.PI * 2, sp = 4 + Math.random() * 7;
-    parts.push({ x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 5, w: 6 + Math.random() * 5, h: 8 + Math.random() * 6,
-      r: Math.random() * 6.28, vr: (Math.random() - 0.5) * 0.3, c: colors[i % colors.length], life: 0 });
+  /* ===== الصوت ===== */
+  const bg = new Audio();
+  const fg = new Set();
+  const musicBtn = $("#musicBtn");
+  let bgOn = false, bgBad = !C.bgMusic;
+  if (C.bgMusic) {
+    bg.src = C.bgMusic;
+    bg.loop = true;
+    bg.preload = "auto";
+    bg.volume = C.bgVolume != null ? C.bgVolume : 0.35;
+    bg.addEventListener("error", () => { bgBad = true; musicBtn.hidden = true; });
   }
-  if (!confRAF) confRAF = requestAnimationFrame(tickConfetti);
-}
-function tickConfetti(){
-  if (!cx) return;
-  cx.clearRect(0, 0, innerWidth, innerHeight);
-  parts = parts.filter(p => p.y < innerHeight + 30 && p.life < 300);
-  parts.forEach(p => {
-    p.life++; p.vx *= 0.985; p.vy = p.vy * 0.985 + 0.25; p.x += p.vx; p.y += p.vy; p.r += p.vr;
-    cx.save(); cx.translate(p.x, p.y); cx.rotate(p.r); cx.fillStyle = p.c;
-    cx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h * Math.cos(p.life * 0.1));
-    cx.restore();
+  function syncBg() {
+    if (bgBad) return;
+    if (bgOn && fg.size === 0) bg.play().catch(() => {});
+    else bg.pause();
+  }
+  function track(m) {
+    m.addEventListener("play", () => { fg.add(m); syncBg(); });
+    ["pause", "ended", "error"].forEach(ev => m.addEventListener(ev, () => { fg.delete(m); syncBg(); }));
+  }
+  musicBtn.addEventListener("click", () => {
+    bgOn = !bgOn;
+    musicBtn.classList.toggle("off", !bgOn);
+    syncBg();
   });
-  confRAF = parts.length ? requestAnimationFrame(tickConfetti) : null;
-}
 
-$('nav').innerHTML = Array.from({ length: PAGES }, (_, i) =>
-  <button data-go="${i + 1}" data-num="${i + 1}" class="${i === 0 ? 'active' : ''}">${(CONFIG.navLabels && CONFIG.navLabels[i]) || 'Page ' + (i + 1)}</button>).join('');
+  /* ===== التنقل بين الصفحات ===== */
+  const pages = $$(".page");
+  const nav = $("#nav");
+  let cur = -1;
+  pages.forEach((p, i) => {
+    const b = el("button", "", (C.navLabels || [])[i] || "Page " + (i + 1));
+    b.addEventListener("click", () => go(i));
+    nav.appendChild(b);
+  });
+  function go(i) {
+    i = Math.max(0, Math.min(pages.length - 1, i));
+    stopForeground();
+    pages.forEach((p, k) => p.classList.toggle("active", k === i));
+    const btns = Array.from(nav.children);
+    btns.forEach((b, k) => b.classList.toggle("active", k === i));
+    const b = btns[i];
+    if (b && nav.scrollWidth > nav.clientWidth) {
+      nav.scrollTo({ left: b.offsetLeft - (nav.clientWidth - b.offsetWidth) / 2, behavior: "smooth" });
+    }
+    window.scrollTo(0, 0);
+    cur = i;
+  }
+  $$("[data-next]").forEach(b => {
+    b.textContent = T.next || "next";
+    b.addEventListener("click", () => go(cur + 1));
+  });
+  function stopForeground() {
+    voice.pause();
+    stopSong();
+    closeLB();
+  }
 
-$('heroTitle').innerHTML = (CONFIG.heroLines || []).map((l, i) => <span style="animation-delay:${0.1 + i * 0.2}s">${l}</span>).join('');
-setImg($('babyImg'), CONFIG.babyPhoto, 'baby photo');
-if (!CONFIG.showHat && $('hat')) $('hat').style.display = 'none';
-$('openBtn').addEventListener('click', e => {
-  const r = e.currentTarget.getBoundingClientRect();
-  confetti(r.left + r.width / 2, r.top + r.height / 2, 100);
-});
+  /* ===== شاشة البداية والقفل ===== */
+  const G = C.gate || {};
+  const gate = $("#gate"), gBtn = $("#gBtn");
+  $("#gKicker").textContent = G.kicker || "";
+  gBtn.textContent = T.open || "open me";
+  function birth() {
+    const m = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(String(C.birthDate || "").trim());
+    return m ? { y: +m[1], mo: +m[2] - 1, d: +m[3] } : null;
+  }
+  function unlockTime() {
+    const b = birth();
+    if (!b) return 0;
+    const tm = String(C.unlockAt || "00:00").trim().match(/^(\d{1,2}):(\d{2})/);
+    const now = new Date();
+    const t = new Date(now.getFullYear(), b.mo, b.d, tm ? +tm[1] : 0, tm ? +tm[2] : 0);
+    if (now - t > 30 * 864e5) t.setFullYear(t.getFullYear() + 1);
+    return t.getTime();
+  }
+  function showStats() {
+    const b = birth(), box = $("#gStats");
+    box.innerHTML = "";
+    if (!b) return;
+    const days = Math.floor((Date.now() - new Date(b.y, b.mo, b.d).getTime()) / 864e5);
+    if (days <= 0) return;
+    [
+      days.toLocaleString("en-US") + " days of you",
+      (days * 24).toLocaleString("en-US") + " hours of you",
+      "and the world is better for every single one"
+    ].forEach(t => box.appendChild(el("span", "", t)));
+  }
+  function showOpen() {
+    $("#gTitle").textContent = G.openTitle || "";
+    $("#gSub").textContent = G.openSub || "";
+    $("#gCount").hidden = true;
+    gBtn.hidden = false;
+    showStats();
+  }
+  (function initGate() {
+    const target = unlockTime();
+    const preview = /[?&]preview\b/i.test(location.search);
+    if (!target || preview || Date.now() >= target) { showOpen(); return; }
+    $("#gTitle").textContent = G.lockedTitle || "";
+    $("#gSub").textContent = G.lockedSub || "";
+    $("#gCount").hidden = false;
+    let iv = 0;
+    const tick = () => {
+      const d = target - Date.now();
+      if (d <= 0) { clearInterval(iv); showOpen(); return; }
+      const s = Math.floor(d / 1000);
+      $("#cdD").textContent = Math.floor(s / 86400);
+      $("#cdH").textContent = pad(Math.floor(s / 3600) % 24);
+      $("#cdM").textContent = pad(Math.floor(s / 60) % 60);
+      $("#cdS").textContent = pad(s % 60);
+    };
+    tick();
+    iv = setInterval(tick, 1000);
+  })();
+  gBtn.addEventListener("click", () => {
+    gate.classList.add("leave");
+    setTimeout(() => gate.classList.add("gone"), 650);
+    if (!bgBad) { bgOn = true; musicBtn.hidden = false; syncBg(); }
+    go(0);
+  });
 
-function traitCol(list, side){
-  if (!list) return '';
-  const n = list.length;
-  return list.map((t, i) => {
-    const off = Math.round(42 * Math.sin(Math.PI * (n > 1 ? i / (n - 1) : 0.5)));
-    return <span class="trait" dir="auto" style="${side}:${off}px;transition-delay:${(0.1 + i * 0.1).toFixed(2)}s">${t}</span>;
-  }).join('');
-}
-$('traitsL').innerHTML = traitCol(CONFIG.traitsLeft, 'right');
-$('traitsR').innerHTML = traitCol(CONFIG.traitsRight, 'left');
-setImg($('mainImg'), CONFIG.mainPhoto, 'photo');
-const SPARKS = [["#e8c547",4,8],["#8fbf6a",-2,60],["#b04fd6",22,95],["#e58fb8",55,-6],["#4fb3c9",92,10],["#e58fb8",88,82]];
-$('blobWrap').insertAdjacentHTML('beforeend', SPARKS.map(([c, t, l], i) =>
-  <svg class="spark" viewBox="0 0 24 24" style="top:${t}%;left:${l}%;animation-delay:${i * 0.4}s"><path fill="${c}" d="M12 0C13 8 16 11 24 12C16 13 13 16 12 24C11 16 8 13 0 12C8 11 11 8 12 0Z"/></svg>).join(''));
+  /* ===== الصفحة ١ ===== */
+  const heroTitle = $("#heroTitle");
+  (C.heroLines || []).forEach((t, i) => {
+    const s = el("span", "", t);
+    s.style.animationDelay = (0.15 + i * 0.25) + "s";
+    heroTitle.appendChild(s);
+  });
+  setImg($("#babyImg"), C.babyPhoto);
+  if (!C.showHat) $("#hat").remove();
 
-(function buildReveal(){
-  const text = CONFIG.memoriesText || '';
-  const arabic = /[\u0600-\u06FF]/.test(text);
-  let html = '';
-  text.split(/(\[^]+\*)/).forEach(part => {
-    if (!part) return;
-    const hl = part.length > 2 && part.startsWith('') && part.endsWith('');
-    const clean = hl ? part.slice(1, -1) : part;
-    const units = arabic ? clean.split(/(\s+)/) : [...clean];
-    units.forEach(u => {
-      if (!u) return;
-      if (/^\s+$/.test(u)){ html += ' '; return; }
-      html += <span${hl ? ' class="hl"' : ''} style="transition-delay:${(Math.random() * 1.8).toFixed(2)}s">${u}</span>;
+  /* ===== الصفحة ٢ ===== */
+  const fillTraits = (box, list, off) => (list || []).forEach((t, i) => {
+    const d = el("div", "trait", t);
+    d.style.transitionDelay = (off + i * 0.12) + "s";
+    box.appendChild(d);
+  });
+  fillTraits($("#traitsL"), C.traitsLeft, 0.1);
+  fillTraits($("#traitsR"), C.traitsRight, 0.16);
+  setImg($("#mainImg"), C.mainPhoto);
+
+  const reveal = $("#reveal");
+  let wi = 0;
+  String(C.memoriesText || "").split("*").forEach((chunk, k) => {
+    chunk.split(/(\s+)/).forEach(w => {
+      if (!w) return;
+      if (/^\s+$/.test(w)) { reveal.appendChild(document.createTextNode(w)); return; }
+      const s = el("span", k % 2 ? "hl" : "", w);
+      s.style.transitionDelay = (wi++ * 0.04) + "s";
+      reveal.appendChild(s);
     });
   });
-  $('revealText').innerHTML = html;
-})();
 
-const POS = [[4,2,-6],[33,7,5],[64,3,3],[1,46,4],[32,50,-3],[63,43,-7]];
-$('collage').innerHTML = (CONFIG.polaroids || []).slice(0, 6).map((src, i) => {
-  const [l, t, r] = POS[i];
-  return <div class="polaroid" style="left:${l}%;top:${t}%;--r:${r}deg;--d:${(0.1 + i * 0.1).toFixed(2)}s">${pic(src, 'photo ' + (i + 1))}</div>;
-}).join('');
-
-$('letterTitle').textContent = CONFIG.letterTitle || '';
-$('letterBody').textContent = (CONFIG.letter || '').trim();
-$('letterSign').textContent = CONFIG.letterSign || '';
-$('miniRow').innerHTML = (CONFIG.letterPhotos || []).map((s, i) => pic(s, 'pic ' + (i + 1), 'mini')).join('');
-
-$('galleryTitle').textContent = CONFIG.galleryTitle || '';
-$('gallerySub').textContent = CONFIG.gallerySubtitle || '';
-const ROT = [-3, 2, -1.5, 3, -2.5, 1.5];
-$('gGrid').innerHTML = (CONFIG.gallery || []).map((g, i) => `
-  <button class="g-card" style="--r:${ROT[i % ROT.length]}deg;--d:${(i * 0.05).toFixed(2)}s">
-    <span class="tape"></span>
-    ${pic(g.photo, 'photo ' + (i + 1))}
-    ${g.caption ? <span class="g-cap" dir="auto">${g.caption}</span> : ''}
-  </button>`).join('');
-document.querySelectorAll('.g-card').forEach(card => card.addEventListener('click', () => {
-  $('lbImg').src = card.querySelector('img').src;
-  const cap = card.querySelector('.g-cap');
-  $('lbCap').textContent = cap ? cap.textContent : '';
-  $('lightbox').classList.add('on');
-}));
-$('lightbox').addEventListener('click', () => $('lightbox').classList.remove('on'));
-
-$('reasonsTitle').textContent = CONFIG.reasonsTitle || '';
-$('reasonsSub').textContent = CONFIG.reasonsSubtitle || '';
-const RS = Array.isArray(CONFIG.reasons) ? CONFIG.reasons : [];
-$('rGrid').innerHTML = RS.map((t, i) =>
-  <button class="rcard" style="--d:${(i * 0.03).toFixed(2)}s"><span class="rinner"><span class="rface rfront"><b>${i + 1}</b><i>&#9829;</i></span><span class="rface rback" dir="auto">${t}</span></span></button>).join('');
-const seenReasons = new Set();
-function updReasonCount(){ $('rCount').textContent = ${seenReasons.size} / ${RS.length}; }
-updReasonCount();
-document.querySelectorAll('.rcard').forEach((c, i) => c.addEventListener('click', () => {
-  c.classList.toggle('flip');
-  if (seenReasons.has(i)) return;
-  seenReasons.add(i);
-  updReasonCount();
-  if (seenReasons.size === RS.length){
-    $('rDone').textContent = CONFIG.reasonsDone;
-    $('rDone').classList.add('on');
-    confetti(innerWidth / 2, innerHeight * 0.7, 130);
-  }
-}));
-
-const paper = $('paper');
-function addP(txt, cls){
-  if (!txt) return;
-  const p = document.createElement('p');
-  p.className = cls;
-  p.textContent = txt;
-  paper.appendChild(p);
-}
-addP(CONFIG.messageTo, 'm-to');
-(CONFIG.message || '').trim().split(/\n\s*\n/).forEach(t => addP(t.trim(), 'm-body'));
-addP(CONFIG.messageFrom, 'm-from');
-const paraIO = new IntersectionObserver(entries => {
-  let k = 0;
-  entries.forEach(en => {
-    if (!en.isIntersecting) return;
-    en.target.style.transitionDelay = (k++ * 0.25).toFixed(2) + 's';
-    en.target.classList.add('in');
-    paraIO.unobserve(en.target);
+  const POS = [[4, 2, -6], [52, 6, 5], [12, 50, 4], [58, 52, -5], [33, 27, -2], [66, 30, 7]];
+  const collage = $("#collage");
+  (C.polaroids || []).slice(0, POS.length).forEach((src, i) => {
+    const [l, t, r] = POS[i];
+    const p = el("div", "polaroid");
+    p.style.cssText = `left:${l}%;top:${t}%;--r:${r}deg;--d:${0.2 + i * 0.18}s`;
+    p.appendChild(img(src));
+    p.addEventListener("click", () => openLB(src));
+    collage.appendChild(p);
   });
-}, { threshold: 0.1 });
-let envOpened = false;
-$('envelope').addEventListener('click', () => {
-  if (envOpened) return;
-  envOpened = true;
-  $('envelope').classList.add('open');
-  setTimeout(() => {
-    $('envWrap').classList.add('gone');
-    paper.classList.add('show');
-    paper.querySelectorAll('p').forEach(p => paraIO.observe(p));
-  }, 1000);
-});
 
-$('voiceTitle').textContent = CONFIG.voiceTitle || '';
-$('voiceSub').textContent = CONFIG.voiceSubtitle || '';
-setImg($('voiceImg'), CONFIG.voicePhoto, 'photo');
-const bars = n => Array.from({ length: n }, () => <i style="--h:${Math.round(30 + Math.random() * 70)}%;--dl:${(Math.random() * 0.9).toFixed(2)}s"></i>).join('');
-$('waveL').innerHTML = bars(9);
-$('waveR').innerHTML = bars(9);
+  $("#letterTitle").textContent = C.letterTitle || "";
+  $("#letterBody").textContent = String(C.letter || "").trim();
+  $("#letterSign").textContent = C.letterSign || "";
+  const miniRow = $("#miniRow");
+  (C.letterPhotos || []).forEach(src => {
+    const m = img(src, "mini");
+    m.addEventListener("click", () => openLB(src));
+    miniRow.appendChild(m);
+  });
 
-$('songsTitle').textContent = CONFIG.songsTitle || '';
-$('songsSub').innerHTML = CONFIG.songsSubtitle || '';
-setImg($('songsImg'), CONFIG.songsPhoto, 'photo');
-const SQ = [[8,-3],[3,10],[30,93],[46,96],[70,-4],[88,80],[96,40]];
-$('songsPhoto').insertAdjacentHTML('beforeend', SQ.map(([t, l], i) => <span class="sq" style="top:${t}%;left:${l}%;animation-delay:${i * 0.35}s"></span>).join(''));
-$('covers').innerHTML = (CONFIG.songs || []).map((s, i) => `
-  <button class="cover" data-i="${i}" style="--d:${(i * 0.04).toFixed(2)}s">
-    ${pic(s.cover, 'cover ' + (i + 1))}
-    <span class="eq"><i></i><i></i><i></i></span>
-    ${CONFIG.showSongTitles ? <span class="cap" dir="auto">${s.title}</span> : ''}
-  </button>`).join('');
+  const io = "IntersectionObserver" in window
+    ? new IntersectionObserver(entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add("show"); io.unobserve(e.target); }
+      }), { threshold: 0.2 })
+    : null;
+  const watchSecs = () => $$(".sec").forEach(s => {
+    s.classList.remove("show");
+    if (io) io.observe(s); else s.classList.add("show");
+  });
+  watchSecs();
 
-$('finaleTitle').textContent = CONFIG.finaleTitle || '';
-$('finaleText').textContent = CONFIG.finaleText || '';
-if (CONFIG.cakePurple && $('cake')) $('cake').classList.add('purple');
-const ageDigits = String(CONFIG.age || '').replace(/\D/g, '');
-if (ageDigits){
-  $('candles').classList.add('nums');
-  $('candles').innerHTML = [...ageDigits].map((d, i) =>
-    <div class="candle num"><span class="digit">${d}</span><span class="flame" style="animation-delay:${(i * 0.07).toFixed(2)}s"></span><span class="smoke"></span></div>).join('');
-} else {
-  const nCandles = Math.max(1, Math.min(12, parseInt(CONFIG.candles, 10) || 5));
-  $('candles').innerHTML = Array.from({ length: nCandles }, (_, i) =>
-    <div class="candle" style="height:${42 + (i % 3) * 4}px"><span class="flame" style="animation-delay:${(i * 0.05).toFixed(2)}s"></span><span class="smoke"></span></div>).join('');
-}
-let blown = false;
-function resetCake(){
-  blown = false;
-  document.querySelectorAll('.candle').forEach(c => c.classList.remove('out'));
-  $('cakeWrap').classList.remove('out');
-  $('finale').classList.remove('done');
-}
-$('cake').addEventListener('click', () => {
-  if (blown) return;
-  blown = true;
-  const cs = [...document.querySelectorAll('.candle')];
-  cs.forEach((c, i) => setTimeout(() => c.classList.add('out'), i * 120));
-  setTimeout(() => {
-    $('cakeWrap').classList.add('out');
-    const r = $('cake').getBoundingClientRect();
-    confetti(r.left + r.width / 2, r.top + 20, 130, CAKE_COLORS);
-    confetti(innerWidth * 0.15, innerHeight * 0.85, 50, CAKE_COLORS);
-    confetti(innerWidth * 0.85, innerHeight * 0.85, 50, CAKE_COLORS);
-    $('finale').classList.add('done');
-  }, cs.length * 120 + 200);
-});
-
-// إرسال الجيميل - حركة فورية بدون أي تأخير
-const WISH_EMAIL = String(CONFIG.wishEmail || '').trim();
-$('wishHint').textContent = WISH_EMAIL ? CONFIG.wishHintShared : CONFIG.wishHint;
-$('wishText').placeholder = CONFIG.wishPlaceholder || '';
-$('wishBtn').textContent = CONFIG.wishBtnText || '';
-let wishSent = false;
-
-function sparkle(x, y){
-  const colors = ['#ffffff', '#ffd45c', CCOLORS[0], CONFIG.candleColor || '#c9a8f0'];
-  for (let i = 0; i < 14; i++){
-    const s = document.createElement('span');
-    s.className = 'wstar';
-    const a = Math.random() * Math.PI * 2, d = 40 + Math.random() * 80;
-    s.style.left = x + 'px';
-    s.style.top = y + 'px';
-    s.style.background = colors[i % colors.length];
-    s.style.setProperty('--sx', Math.round(Math.cos(a) * d) + 'px');
-    s.style.setProperty('--sy', Math.round(Math.sin(a) * d - 30) + 'px');
-    document.body.appendChild(s);
-    setTimeout(() => s.remove(), 1400);
+  /* ===== عارض الصور ===== */
+  const lb = $("#lb"), lbImg = $("#lbImg"), lbCap = $("#lbCap");
+  function openLB(src, cap) {
+    setImg(lbImg, src);
+    lbCap.textContent = cap || "";
+    lbCap.hidden = !cap;
+    lb.classList.add("on");
   }
-}
+  function closeLB() { lb.classList.remove("on"); }
+  lb.addEventListener("click", closeLB);
 
-$('wishBtn').addEventListener('click', () => {
-  if (wishSent) return;
-  const txt = $('wishText').value.trim();
-  if (!txt){ $('wishText').focus(); return; }
-  
-  wishSent = true;
-  $('wishText').blur();
+  /* ===== الصفحة ٣ ===== */
+  $("#galTitle").textContent = C.galleryTitle || "";
+  $("#galSub").textContent = C.gallerySubtitle || "";
+  const ROT = [-3, 2.5, -1.5, 3, -2.5, 1.5];
+  const gGrid = $("#gGrid");
+  (C.gallery || []).forEach((g, i) => {
+    const b = el("button", "g-card");
+    b.style.setProperty("--r", ROT[i % ROT.length] + "deg");
+    b.style.setProperty("--d", (i * 0.1) + "s");
+    b.appendChild(el("span", "tape"));
+    b.appendChild(img(g.photo, "", g.caption));
+    if (g.caption) { const c = el("span", "g-cap", g.caption); c.dir = "auto"; b.appendChild(c); }
+    b.addEventListener("click", () => openLB(g.photo, g.caption));
+    gGrid.appendChild(b);
+  });
 
-  // تنفيذ أنيميشن الطيران فوراً دون انتظار شبكة الإنترنت
-  const r = $('wishPaper').getBoundingClientRect();
-  $('wish').classList.add('sent');
-  sparkle(r.left + r.width / 2, r.top + r.height / 2);
-  setTimeout(() => sparkle(innerWidth / 2, innerHeight * 0.2), 800);
-  setTimeout(() => {
-    $('wishDone').textContent = CONFIG.wishDoneText;
-    $('wishDone').classList.add('on');
-  }, 1200);
-
-  // الإرسال في الخلفية
-  if (WISH_EMAIL){
-    fetch('https://formsubmit.co/ajax/' + WISH_EMAIL, {
-      method: 'POST',
-      headers: { 
-        'Content-Type': 'application/json', 
-        'Accept': 'application/json' 
-      },
-      body: JSON.stringify({ 
-        _subject: NAME + "'s birthday wish & message 💜", 
-        wish: txt 
-      })
-    }).catch(() => {});
-  }
-});
-
-const ICON = {
-  play:  '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>',
-  pause: '<svg viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>',
-  note:  '<svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>',
-  mute:  '<svg viewBox="0 0 24 24"><path d="M4.27 3 3 4.27l9 9v.28A4 4 0 1 0 14 17v-1.73L19.73 21 21 19.73 4.27 3zM14 7h4V3h-6v5.18l2 2V7z"/></svg>'
-};
-const bg = $('bg');
-if (CONFIG.bgMusic) bg.src = CONFIG.bgMusic;
-
-// تحسين الفويس والتحميل
-const voice = new Audio(CONFIG.voiceNote || 'voice.mp3');
-voice.preload = 'auto';
-voice.setAttribute('playsinline', '');
-
-const song = new Audio();
-song.setAttribute('playsinline', '');
-let started = false, musicOn = true, current = -1, playToken = 0;
-
-function playBg(){
-  if (!started || !musicOn || current >= 0 || !voice.paused) return;
-  if (vmodalOpen()) return;
-  if (bg.paused && bg.src){
-    bg.volume = 0;
-    bg.play().catch(() => {});
-  }
-  fadeTo(bg, CONFIG.bgVolume || 0.35, 1000);
-}
-function pauseBg(){ if (!bg.paused) fadeTo(bg, 0, 400, () => bg.pause()); }
-
-function updMusicBtn(){ const b = $('musicBtn'); b.innerHTML = musicOn ? ICON.note : ICON.mute; b.classList.toggle('off', !musicOn); }
-updMusicBtn();
-$('musicBtn').addEventListener('click', () => {
-  if (!started){ started = true; musicOn = true; } else musicOn = !musicOn;
-  musicOn ? playBg() : pauseBg();
-  updMusicBtn();
-});
-
-const voiceBtn = $('voiceBtn');
-voiceBtn.innerHTML = ICON.play;
-function setVoiceUI(on){
-  voiceBtn.innerHTML = on ? ICON.pause : ICON.play;
-  $('record').classList.toggle('playing', on);
-  document.querySelectorAll('.wave').forEach(w => w.classList.toggle('playing', on));
-}
-function updVoiceTime(){
-  const d = isFinite(voice.duration) ? voice.duration : 0;
-  $('vBar').style.width = d ? (voice.currentTime / d * 100) + '%' : '0%';
-  $('vTime').textContent = fmt(voice.currentTime) + ' / ' + fmt(d);
-}
-
-voiceBtn.addEventListener('click', () => {
-  started = true;
-  if (voice.paused){
-    stopSong(false);
-    pauseBg();
-    voice.load(); // إعادة تحميل الملف عند التشغيل للتأكيد
-    voice.play().then(() => setVoiceUI(true)).catch(err => {
-      console.error(err);
-      alert("Please ensure the voice file is saved as 'voice.mp3' in the repository.");
-      setVoiceUI(false);
-      playBg();
+  /* ===== الصفحة ٤ ===== */
+  $("#rTitle").textContent = C.reasonsTitle || "";
+  $("#rSub").textContent = C.reasonsSubtitle || "";
+  const reasons = C.reasons || [], rGrid = $("#rGrid"), rCount = $("#rCount"), rDone = $("#rDone");
+  rDone.textContent = C.reasonsDone || "";
+  let seen = 0;
+  const updReasons = () => {
+    rCount.textContent = seen + " / " + reasons.length + " opened";
+    rDone.classList.toggle("on", reasons.length > 0 && seen === reasons.length);
+  };
+  reasons.forEach((t, i) => {
+    const c = el("button", "rcard");
+    c.style.setProperty("--d", (i * 0.04) + "s");
+    const inner = el("div", "rinner");
+    const front = el("div", "rface rfront");
+    front.appendChild(el("b", "", String(i + 1)));
+    front.appendChild(el("i", "", "♥"));
+    const back = el("div", "rface rback", t);
+    back.dir = "auto";
+    inner.append(front, back);
+    c.appendChild(inner);
+    c.addEventListener("click", () => {
+      c.classList.toggle("flip");
+      if (!c.dataset.seen) {
+        c.dataset.seen = "1";
+        seen++;
+        updReasons();
+        if (seen === reasons.length) burst(80);
+      }
     });
-  } else voice.pause();
-});
-
-// أزرار التقديم والتأخير 10 ثوانٍ للفويس
-$('rewindBtn').addEventListener('click', () => {
-  if (isFinite(voice.currentTime)) {
-    voice.currentTime = Math.max(0, voice.currentTime - 10);
-    updVoiceTime();
-  }
-});
-$('forwardBtn').addEventListener('click', () => {
-  if (isFinite(voice.duration)) {
-    voice.currentTime = Math.min(voice.duration, voice.currentTime + 10);
-    updVoiceTime();
-  }
-});
-
-voice.addEventListener('play', () => setVoiceUI(true));
-voice.addEventListener('pause', () => { setVoiceUI(false); playBg(); });
-voice.addEventListener('timeupdate', updVoiceTime);
-voice.addEventListener('loadedmetadata', updVoiceTime);
-$('vProg').addEventListener('click', e => {
-  if (!isFinite(voice.duration)) return;
-  const r = e.currentTarget.getBoundingClientRect();
-  voice.currentTime = (e.clientX - r.left) / r.width * voice.duration;
-});
-
-function markCovers(){
-  document.querySelectorAll('.cover').forEach(b => b.classList.toggle('playing', +b.dataset.i === current));
-  $('now').classList.toggle('on', current >= 0);
-}
-function stopSong(resume){
-  if (current < 0) return;
-  current = -1;
-  playToken++;
-  clearInterval(song._fade);
-  song.pause();
-  markCovers();
-  if (resume) playBg();
-}
-
-function playSong(i){
-  started = true;
-  if (current === i){ stopSong(true); return; }
-  stopSong(false);
-  const s = CONFIG.songs[i];
-  current = i;
-  const token = ++playToken;
-  voice.pause();
-  pauseBg();
-
-  song._fading = false;
-  song.volume = 1;
-  song.src = s.file + '#t=' + (s.start || 0);
-
-  song.play().then(() => {
-    if (token !== playToken) return;
-    $('nowText').textContent = TX.nowPlaying + ' · ' + s.title + (s.artist ? ' — ' + s.artist : '');
-    markCovers();
-  }).catch(() => {
-    if (token !== playToken) return;
-    stopSong(true);
+    rGrid.appendChild(c);
   });
-}
-song.addEventListener('loadedmetadata', () => {
-  if (current < 0) return;
-  const st = CONFIG.songs[current].start || 0;
-  if (Math.abs(song.currentTime - st) > 1) song.currentTime = st;
-});
-song.addEventListener('timeupdate', () => {
-  if (current < 0) return;
-  const s = CONFIG.songs[current];
-  const start = s.start || 0;
-  const end = s.end || (isFinite(song.duration) ? song.duration : 0);
-  if (!end) return;
-  const left = end - song.currentTime;
-  $('nowBar').style.width = Math.min(100, Math.max(0, (song.currentTime - start) / (end - start) * 100)) + '%';
-  if (left < 1.6 && !song._fading){ song._fading = true; fadeTo(song, 0, Math.max(250, left * 1000)); }
-  if (left <= 0.05) stopSong(true);
-});
-song.addEventListener('ended', () => stopSong(true));
-document.querySelectorAll('.cover').forEach(b => b.addEventListener('click', () => playSong(+b.dataset.i)));
+  updReasons();
 
-const vmodal = $('vmodal'), vplayer = $('vplayer');
-let vDone = null;
-function vmodalOpen(){ return vmodal ? vmodal.classList.contains('on') : false; }
-function showVideo(src, done){
-  if (!src) { if (done) done(); return; }
-  vDone = done || null;
-  stopSong(false);
-  voice.pause();
-  pauseBg();
-  vplayer.src = src;
-  vmodal.classList.add('on');
-  vplayer.play().catch(() => {
-    closeVideo();
+  /* ===== الصفحة ٥ ===== */
+  const env = $("#envelope"), envWrap = $("#envWrap"), paper = $("#paper"), p5end = $("#p5end");
+  $("#envHint").textContent = T.tapToOpen || "";
+  [["#mTo", C.messageTo], ["#mBody", String(C.message || "").trim()], ["#mFrom", C.messageFrom]].forEach(([s, t]) => {
+    const p = $(s);
+    p.textContent = t || "";
+    p.hidden = !t;
   });
-}
-function closeVideo(){
-  if (!vmodalOpen()) return;
-  vplayer.pause();
-  vmodal.classList.remove('on');
-  const d = vDone; vDone = null;
-  if (d) d();
-  playBg();
-}
-if ($('vclose')) $('vclose').addEventListener('click', e => { e.stopPropagation(); closeVideo(); });
-if (vplayer) {
-  vplayer.addEventListener('ended', closeVideo);
-  vplayer.onerror = () => { closeVideo(); };
-}
-if (vmodal) vmodal.addEventListener('click', e => { if (e.target === vmodal) closeVideo(); });
-
-const askImg = $('askImg'), yesBtn = $('yesBtn'), noBtn = $('noBtn');
-if (askImg) {
-  askImg.onerror = () => { askImg.style.display = 'none'; };
-  if (CONFIG.askPhoto) askImg.src = CONFIG.askPhoto; else askImg.style.display = 'none';
-}
-if ($('askQ')) $('askQ').textContent = CONFIG.loveQuestion || '';
-if ($('yesMsg')) $('yesMsg').textContent = CONFIG.yesText || '';
-const MAX_DODGES = Math.max(1, parseInt(CONFIG.noDodges, 10) || 6);
-let dodges = 0, lastDodge = 0;
-function resetNo(){
-  if (!noBtn) return;
-  noBtn.classList.remove('run');
-  noBtn.style.left = ''; noBtn.style.top = '';
-}
-function dodge(e){
-  if (dodges >= MAX_DODGES) return;
-  if (e){ e.preventDefault(); e.stopPropagation(); }
-  dodges++;
-  lastDodge = Date.now();
-  noBtn.textContent = dodges >= MAX_DODGES ? CONFIG.noGiveUpText
-    : (CONFIG.noTexts && CONFIG.noTexts.length ? CONFIG.noTexts[(dodges - 1) % CONFIG.noTexts.length] : TX.no);
-  yesBtn.style.setProperty('--g', Math.min(1 + dodges * 0.12, 2).toFixed(2));
-  const r = noBtn.getBoundingClientRect();
-  const w = r.width, h = r.height;
-  const px = e && e.clientX != null ? e.clientX : r.left + w / 2;
-  const py = e && e.clientY != null ? e.clientY : r.top + h / 2;
-  let x, y, tries = 0;
-  do {
-    x = 12 + Math.random() * Math.max(10, innerWidth - w - 24);
-    y = 56 + Math.random() * Math.max(10, innerHeight - h - 70);
-    tries++;
-  } while (tries < 25 && Math.hypot(x + w / 2 - px, y + h / 2 - py) < 160);
-  if (!noBtn.classList.contains('run')){
-    noBtn.style.left = r.left + 'px';
-    noBtn.style.top = r.top + 'px';
-    noBtn.classList.add('run');
-    void noBtn.offsetWidth;
-  }
-  noBtn.style.left = x + 'px';
-  noBtn.style.top = y + 'px';
-}
-if (noBtn) {
-  noBtn.addEventListener('pointerdown', dodge);
-  noBtn.addEventListener('mouseenter', dodge);
-  noBtn.addEventListener('click', e => {
-    e.preventDefault(); e.stopPropagation();
-    if (Date.now() - lastDodge < 500) return;
-    if (dodges < MAX_DODGES){ dodge(e); return; }
-    started = true;
-    if (CONFIG.noVideo) {
-      showVideo(CONFIG.noVideo, () => {
-        resetNo();
-        noBtn.style.display = 'none';
-        $('askQ').textContent = CONFIG.onlyYesText;
-      });
-    } else {
-      resetNo();
-      noBtn.style.display = 'none';
-      $('askQ').textContent = CONFIG.onlyYesText;
-    }
-  });
-}
-if (yesBtn) {
-  yesBtn.addEventListener('click', () => {
-    started = true;
-    const r = yesBtn.getBoundingClientRect();
-    confetti(r.left + r.width / 2, r.top + r.height / 2, 130);
-    confetti(innerWidth * 0.2, innerHeight * 0.85, 50);
-    confetti(innerWidth * 0.8, innerHeight * 0.85, 50);
-    resetNo();
-    $('ask').classList.add('done');
-    if (CONFIG.yesVideo) showVideo(CONFIG.yesVideo);
-  });
-}
-
-const gate = $('gate');
-const PREVIEW = new URLSearchParams(location.search).has('preview');
-function parseDate(s){
-  if (!s) return null;
-  const m = String(s).match(/^(\d{4})-(\d{1,2})-(\d{1,2})(?:[T ](\d{1,2}):(\d{2}))?/);
-  return m ? new Date(+m[1], +m[2] - 1, +m[3], +(m[4] || 0), +(m[5] || 0)) : null;
-}
-const BIRTH = parseDate(CONFIG.birthDate), UNLOCK = parseDate(CONFIG.unlockAt);
-let gateTimer = null, gateState = '';
-function two(n){ return String(n).padStart(2, '0'); }
-function cdBlocks(ms, forceDays){
-  const s = Math.max(0, Math.floor(ms / 1000));
-  const d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60), sec = s % 60;
-  const L = CONFIG.gateLabels || ['days', 'hours', 'min', 'sec'];
-  const ps = [];
-  if (d > 0 || forceDays) ps.push([d, L[0]]);
-  ps.push([h, L[1]], [m, L[2]], [sec, L[3]]);
-  return ps.map(([n, l]) => <div class="cd-b"><b>${two(n)}</b><span>${l}</span></div>).join('');
-}
-function ageInfo(now){
-  let years = now.getFullYear() - BIRTH.getFullYear();
-  let last = new Date(BIRTH); last.setFullYear(BIRTH.getFullYear() + years);
-  if (last > now){ years--; last = new Date(BIRTH); last.setFullYear(BIRTH.getFullYear() + years); }
-  return { years, since: now - last, total: now - BIRTH };
-}
-const fillAge = (s, a) => String(s || '').replace(/\{age\}/g, a);
-function renderGate(){
-  const now = new Date();
-  const locked = UNLOCK && now < UNLOCK && !PREVIEW;
-  if (locked){
-    if (gateState !== 'locked'){
-      gateState = 'locked';
-      $('gateKicker').textContent = CONFIG.gateLockedKicker;
-      $('gateTitle').textContent = CONFIG.gateLockedTitle;
-      $('gateSub').textContent = CONFIG.gateLockedSub;
-      $('gateNote').textContent = CONFIG.gateLockedNote;
-      $('gateStats').innerHTML = '';
-      $('gateBtn').hidden = true;
-    }
-    $('gateCount').innerHTML = cdBlocks(UNLOCK - now);
-    return;
-  }
-  if (gateState !== 'open'){
-    if (gateState === 'locked'){
-      confetti(innerWidth / 2, innerHeight * 0.4, 150);
-    }
-    gateState = 'open';
-    $('gateKicker').textContent = CONFIG.gateOpenKicker;
-    $('gateNote').textContent = '';
-    $('gateBtn').textContent = CONFIG.gateBtnText;
-    $('gateBtn').hidden = false;
-  }
-  const age = BIRTH ? ageInfo(now).years : (CONFIG.age || '');
-  $('gateTitle').textContent = fillAge(CONFIG.gateOpenTitle, age);
-  if (BIRTH){
-    const a = ageInfo(now);
-    $('gateSub').textContent = fillAge(CONFIG.gateOpenSub, a.years);
-    $('gateCount').innerHTML = cdBlocks(a.since, true);
-    const days = Math.floor(a.total / 86400000), hours = Math.floor(a.total / 3600000), beats = Math.floor(a.total / 60000) * 80;
-    $('gateStats').innerHTML = [
-      ${days.toLocaleString('en-US')} ${CONFIG.gateStatDays},
-      ${hours.toLocaleString('en-US')} ${CONFIG.gateStatHours},
-      ~${beats.toLocaleString('en-US')} ${CONFIG.gateStatBeats}
-    ].map(t => <span>${t}</span>).join('');
-  } else {
-    $('gateSub').textContent = '';
-    $('gateCount').innerHTML = '';
-    $('gateStats').innerHTML = '';
-  }
-}
-
-if (gate) {
-  renderGate();
-  gateTimer = setInterval(renderGate, 1000);
- $('#gateBtn').addEventListener('click', () => {
-    started = true;
-    playBg();
-    confetti(innerWidth / 2, innerHeight * 0.6, 12);
-    
-    const gate = document.getElementById('gateBtn');
-    if (gate) gate.classList.add('leave');
-    
-    clearInterval(gateTimer);
-    
-    const h = document.querySelector('.herotitle');
-    if (h) h.innerHTML = h.innerHTML;
-    
+  function openEnvelope() {
+    if (env.classList.contains("open")) return;
+    env.classList.add("open");
     setTimeout(() => {
-        if (gate) gate.classList.add('gone');
-    }, 700);
-});}
+      envWrap.classList.add("gone");
+      paper.classList.add("show");
+      p5end.hidden = false;
+      Array.from(paper.children).filter(p => !p.hidden).forEach((p, i) => setTimeout(() => p.classList.add("in"), 250 + i * 450));
+    }, 1100);
+  }
+  env.addEventListener("click", openEnvelope);
+  env.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openEnvelope(); } });
 
-function go(n){
-  n = Math.min(PAGES, Math.max(1, n));
-  stopSong(false);
-  voice.pause();
-  $('lightbox').classList.remove('on');
-  if (n === 8 && !$('ask').classList.contains('done')) resetNo();
-  if (n === 9) resetCake();
-  document.querySelectorAll('.page').forEach((p, i) => p.classList.toggle('active', i + 1 === n));
-  document.querySelectorAll('nav button').forEach((b, i) => b.classList.toggle('active', i + 1 === n));
-  window.scrollTo(0, 0);
-  playBg();
-}
-document.addEventListener('click', e => {
-  const t = e.target.closest('[data-go]');
-  if (!t) return;
-  started = true;
-  go(+t.dataset.go);
-});
+  /* ===== الصفحة ٦ ===== */
+  $("#vTitle").textContent = C.voiceTitle || "";
+  $("#vSub").textContent = C.voiceSubtitle || "";
+  setImg($("#vPhoto"), C.voicePhoto);
+  const voice = new Audio();
+  voice.preload = "metadata";
+  if (C.voiceNote) voice.src = C.voiceNote;
+  track(voice);
+  const rec = $("#record"), wave = $("#wave"), vPlay = $("#vPlay"), vProg = $("#vProg"), vBar = vProg.firstElementChild, vTimeEl = $("#vTime");
+  for (let i = 0; i < 28; i++) {
+    const b = el("i");
+    b.style.setProperty("--h", (12 + Math.round(Math.abs(Math.sin(i * 1.7)) * 26)) + "px");
+    b.style.setProperty("--dl", (i * 0.05) + "s");
+    wave.appendChild(b);
+  }
+  const ICON_PLAY = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+  const ICON_PAUSE = '<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>';
+  const vState = on => {
+    vPlay.innerHTML = on ? ICON_PAUSE : ICON_PLAY;
+    rec.classList.toggle("playing", on);
+    wave.classList.toggle("playing", on);
+  };
+  vState(false);
+  const vUpdate = () => {
+    const d = voice.duration, ok = isFinite(d) && d > 0;
+    vBar.style.width = (ok ? voice.currentTime / d * 100 : 0) + "%";
+    vTimeEl.textContent = fmt(voice.currentTime) + " / " + (ok ? fmt(d) : "0:00");
+  };
+  voice.addEventListener("play", () => vState(true));
+  voice.addEventListener("pause", () => vState(false));
+  voice.addEventListener("ended", () => vState(false));
+  voice.addEventListener("timeupdate", vUpdate);
+  voice.addEventListener("loadedmetadata", vUpdate);
+  vPlay.addEventListener("click", () => {
+    if (voice.paused) voice.play().catch(() => {});
+    else voice.pause();
+  });
+  const seekBy = s => {
+    if (!isFinite(voice.duration)) return;
+    voice.currentTime = Math.max(0, Math.min(voice.duration, voice.currentTime + s));
+    vUpdate();
+  };
+  $("#vBack").addEventListener("click", () => seekBy(-10));
+  $("#vFwd").addEventListener("click", () => seekBy(10));
+  vProg.addEventListener("click", e => {
+    if (!isFinite(voice.duration)) return;
+    const r = vProg.getBoundingClientRect();
+    voice.currentTime = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * voice.duration;
+    vUpdate();
+  });
+  vUpdate();
 
-const io = new IntersectionObserver(entries => entries.forEach(en => {
-  if (en.isIntersecting) en.target.classList.add('show');
-}), { threshold: 0.1 });
-document.querySelectorAll('.observe').forEach(el => io.observe(el));
+  /* ===== الصفحة ٧ ===== */
+  $("#sTitle").textContent = C.songsTitle || "";
+  $("#sSub").innerHTML = C.songsSubtitle || "";
+  setImg($("#sPhoto"), C.songsPhoto);
+  const song = new Audio();
+  song.preload = "none";
+  track(song);
+  const coversBox = $("#covers"), nowEl = $("#now"), nowTxt = $("#nowTxt"), nowBar = $("#nowBar");
+  let curCover = null, sStart = 0, sEnd = Infinity;
+  (C.songs || []).forEach((s, i) => {
+    const b = el("button", "cover");
+    b.style.setProperty("--d", Math.min(i * 0.03, 1) + "s");
+    b.appendChild(img(s.cover, "", s.title));
+    const eq = el("span", "eq");
+    eq.append(el("i"), el("i"), el("i"));
+    b.appendChild(eq);
+    if (C.showSongTitles) { const cap = el("span", "cap", s.title); cap.dir = "auto"; b.appendChild(cap); }
+    b.addEventListener("click", () => { if (curCover === b) stopSong(); else playSong(s, b); });
+    coversBox.appendChild(b);
+  });
+  function playSong(s, b) {
+    stopSong();
+    curCover = b;
+    b.classList.add("playing");
+    sStart = Math.max(0, +s.start || 0);
+    sEnd = +s.end > sStart ? +s.end : Infinity;
+    song.src = s.file;
+    song.addEventListener("loadedmetadata", () => { try { song.currentTime = sStart; } catch (e) {} }, { once: true });
+    song.play().catch(() => { if (curCover === b) stopSong(); });
+    nowTxt.textContent = (T.nowPlaying || "now playing") + " · " + s.title + (s.artist ? " — " + s.artist : "");
+    nowEl.classList.add("on");
+  }
+  function stopSong() {
+    if (curCover) curCover.classList.remove("playing");
+    curCover = null;
+    song.pause();
+    nowEl.classList.remove("on");
+    nowBar.style.width = "0";
+  }
+  song.addEventListener("timeupdate", () => {
+    if (!curCover) return;
+    if (song.currentTime >= sEnd) { stopSong(); return; }
+    const end = Math.min(sEnd, isFinite(song.duration) ? song.duration : Infinity);
+    if (isFinite(end) && end > sStart) {
+      nowBar.style.width = Math.min(100, Math.max(0, (song.currentTime - sStart) / (end - sStart) * 100)) + "%";
+    }
+  });
+  song.addEventListener("ended", stopSong);
+
+  /* ===== نافذة الفيديو ===== */
+  const vm = $("#vm"), vmVideo = $("#vmVideo");
+  let vmDone = null;
+  track(vmVideo);
+  function playVideo(src, done) {
+    if (!src) { if (done) done(); return; }
+    vmDone = done || null;
+    vmVideo.src = src;
+    vm.classList.add("on");
+    vmVideo.play().catch(() => {});
+  }
+  function closeVideo() {
+    if (!vm.classList.contains("on")) return;
+    vm.classList.remove("on");
+    vmVideo.pause();
+    vmVideo.removeAttribute("src");
+    vmVideo.load();
+    const d = vmDone;
+    vmDone = null;
+    if (d) d();
+  }
+  vmVideo.addEventListener("ended", closeVideo);
+  vmVideo.addEventListener("error", closeVideo);
+  $("#vmClose").addEventListener("click", closeVideo);
+  vm.addEventListener("click", e => { if (e.target === vm) closeVideo(); });
+
+  /* ===== الصفحة ٨ ===== */
+  const ask = $("#ask"), askQ = $("#askQ"), yesBtn = $("#yesBtn"), noBtn = $("#noBtn");
+  setImg($("#askImg"), C.askPhoto);
+  $("#yesMsg").textContent = C.yesText || "";
+  const maxDodges = C.noDodges != null ? C.noDodges : 6;
+  let dodges = 0, gaveUp = false, gaveUpAt = 0;
+  function resetAsk() {
+    dodges = 0;
+    gaveUp = false;
+    ask.classList.remove("done");
+    askQ.textContent = C.loveQuestion || "";
+    yesBtn.textContent = T.yes || "yes";
+    yesBtn.style.setProperty("--g", 1);
+    noBtn.textContent = T.no || "no";
+    noBtn.hidden = false;
+    noBtn.classList.remove("run");
+    noBtn.style.left = "";
+    noBtn.style.top = "";
+  }
+  resetAsk();
+  function keepNoInside() {
+    if (!noBtn.classList.contains("run")) return;
+    const r = noBtn.getBoundingClientRect();
+    noBtn.style.left = Math.max(8, Math.min(innerWidth - r.width - 8, r.left)) + "px";
+    noBtn.style.top = Math.max(52, Math.min(innerHeight - r.height - 8, r.top)) + "px";
+  }
+  function moveNo() {
+    const r = noBtn.getBoundingClientRect();
+    if (!noBtn.classList.contains("run")) {
+      noBtn.style.left = r.left + "px";
+      noBtn.style.top = r.top + "px";
+      noBtn.classList.add("run");
+      void noBtn.offsetWidth;
+    }
+    const w = noBtn.offsetWidth, h = noBtn.offsetHeight, y = yesBtn.getBoundingClientRect();
+    let nx = 8, ny = 52;
+    for (let n = 0; n < 30; n++) {
+      nx = 8 + Math.random() * Math.max(0, innerWidth - w - 16);
+      ny = 52 + Math.random() * Math.max(0, innerHeight - h - 60);
+      const hitsYes = nx < y.right + 12 && nx + w > y.left - 12 && ny < y.bottom + 12 && ny + h > y.top - 12;
+      const tooClose = Math.hypot(nx - r.left, ny - r.top) < 120;
+      if (!hitsYes && !tooClose) break;
+    }
+    noBtn.style.left = nx + "px";
+    noBtn.style.top = ny + "px";
+  }
+  function tryNo(e) {
+    if (gaveUp) return;
+    if (e) e.preventDefault();
+    dodges++;
+    yesBtn.style.setProperty("--g", Math.min(1 + dodges * 0.14, 1.9));
+    if (dodges >= maxDodges) {
+      gaveUp = true;
+      gaveUpAt = Date.now();
+      noBtn.textContent = C.noGiveUpText || T.no;
+      keepNoInside();
+      return;
+    }
+    const tx = C.noTexts || [];
+    noBtn.textContent = tx.length ? tx[(dodges - 1) % tx.length] : (T.no || "no");
+    moveNo();
+  }
+  if (matchMedia("(hover: hover)").matches) noBtn.addEventListener("mouseenter", () => tryNo());
+  noBtn.addEventListener("pointerdown", e => { if (!gaveUp) tryNo(e); });
+  noBtn.addEventListener("click", e => {
+    e.preventDefault();
+    if (!gaveUp || Date.now() - gaveUpAt < 350) return;
+    playVideo(C.noVideo, () => {
+      noBtn.hidden = true;
+      noBtn.classList.remove("run");
+      askQ.textContent = C.onlyYesText || askQ.textContent;
+      yesBtn.style.setProperty("--g", 1.6);
+    });
+  });
+  yesBtn.addEventListener("click", () => {
+    playVideo(C.yesVideo, () => { ask.classList.add("done"); burst(90); });
+  });
+  window.addEventListener("resize", keepNoInside);
+
+  /* ===== الصفحة ٩ ===== */
+  $("#fTitle").textContent = C.finaleTitle || "";
+  $("#blowHint").textContent = T.blowHint || "";
+  $("#fText").textContent = C.finaleText || "";
+  $("#wishHint").textContent = C.wishHint || "";
+  const finale = $("#finale"), cake = $("#cake"), wishTa = $("#wishTa"), wishBtn = $("#wishBtn"), wishDone = $("#wishDone"), againBtn = $("#againBtn");
+  wishTa.placeholder = C.wishPlaceholder || "";
+  wishBtn.textContent = C.wishBtnText || "send";
+  wishDone.textContent = C.wishDoneText || "";
+  againBtn.textContent = T.again || "start again";
+  if (C.cakePurple) cake.classList.add("purple");
+  cake.innerHTML = buildCake();
+
+  function buildCake() {
+    const n = Math.max(1, Math.min(Math.round(+C.age) || 1, 40));
+    const rows = n > 12 ? 2 : 1, per = Math.ceil(n / rows);
+    const L = 74, R = 226, H = 30;
+    let candles = "", k = 0;
+    for (let r = 0; r < rows; r++) {
+      const cnt = Math.min(per, n - r * per);
+      const base = rows === 2 ? (r === 0 ? 99 : 107) : 103;
+      const shift = rows === 2 ? (r === 0 ? 0.3 : 0.7) : 0.5;
+      const step = (R - L) / cnt;
+      for (let j = 0; j < cnt; j++, k++) {
+        const x = +(L + step * (j + shift)).toFixed(1), top = base - H;
+        const col = k % 2 ? "var(--candle2)" : "var(--candle)";
+        candles += '<g class="candle">' +
+          `<rect x="${x - 3}" y="${top}" width="6" height="${H}" rx="2" style="fill:${col}"/>` +
+          `<rect x="${x - 3}" y="${top + 7}" width="6" height="2.5" fill="rgba(255,255,255,.55)"/>` +
+          `<rect x="${x - 3}" y="${top + 17}" width="6" height="2.5" fill="rgba(255,255,255,.55)"/>` +
+          `<line x1="${x}" y1="${top}" x2="${x}" y2="${top - 4}" stroke="#3a2a2a" stroke-width="1.2" stroke-linecap="round"/>` +
+          `<ellipse class="flame" cx="${x}" cy="${top - 10}" rx="3.6" ry="7" fill="url(#flameG)" style="animation-delay:-${Math.random().toFixed(2)}s"/>` +
+          `<circle class="smoke" cx="${x}" cy="${top - 10}" r="4" fill="rgba(235,235,235,.7)"/>` +
+          "</g>";
+      }
+    }
+    const drip = (x0, x1, y, cnt) => {
+      const w = (x1 - x0) / cnt;
+      let d = `M${x0} ${y + 6} Q${x0} ${y} ${x0 + 6} ${y} L${x1 - 6} ${y} Q${x1} ${y} ${x1} ${y + 6} L${x1} ${y + 12}`;
+      for (let i = cnt - 1; i >= 0; i--) {
+        const a = x0 + i * w, dep = 10 + ((i * 7) % 3) * 6;
+        d += ` Q${(a + w / 2).toFixed(1)} ${y + 12 + dep} ${a.toFixed(1)} ${y + 12}`;
+      }
+      return d + " Z";
+    };
+    let dotsTop = "", dotsBottom = "";
+    for (let x = 84; x <= 216; x += 22) dotsTop += `<circle class="ck-deco" cx="${x}" cy="136" r="3"/>`;
+    for (let x = 54; x <= 246; x += 24) dotsBottom += `<circle class="ck-deco" cx="${x}" cy="206" r="4"/>`;
+    return '<svg viewBox="0 0 300 250" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+      '<defs><radialGradient id="flameG" cx=".5" cy=".65" r=".6"><stop offset="0" stop-color="#fff8d0"/><stop offset=".55" stop-color="#ffc54d"/><stop offset="1" stop-color="#ff7b2e"/></radialGradient></defs>' +
+      '<ellipse class="ck-plate" cx="150" cy="232" rx="138" ry="14"/>' +
+      '<rect class="ck-body2" x="64" y="98" width="172" height="58" rx="10"/>' +
+      `<path class="ck-frost" d="${drip(64, 236, 98, 7)}"/>` +
+      dotsTop + candles +
+      '<rect class="ck-body" x="34" y="150" width="232" height="82" rx="12"/>' +
+      `<path class="ck-frost" d="${drip(34, 266, 150, 9)}"/>` +
+      dotsBottom +
+      "</svg>";
+  }
+
+  let blown = false;
+  function blow() {
+    if (blown) return;
+    blown = true;
+    const cs = Array.from(cake.querySelectorAll(".candle"));
+    cs.forEach((c, i) => setTimeout(() => c.classList.add("out"), i * 45 + Math.random() * 60));
+    setTimeout(() => { finale.classList.add("blown"); burst(150); }, cs.length * 45 + 500);
+  }
+  cake.addEventListener("click", blow);
+  cake.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); blow(); } });
+
+  wishBtn.addEventListener("click", () => {
+    const t = wishTa.value.trim();
+    if (!t) {
+      wishTa.classList.remove("shake");
+      void wishTa.offsetWidth;
+      wishTa.classList.add("shake");
+      wishTa.focus();
+      return;
+    }
+    const to = C.wishEmail || "";
+    const su = encodeURIComponent(C.wishSubject || "a birthday wish 💫");
+    const body = encodeURIComponent(t);
+    const desktop = matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (desktop) window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${su}&body=${body}`, "_blank");
+    else location.href = `mailto:${to}?subject=${su}&body=${body}`;
+    wishDone.hidden = false;
+    burst(60);
+  });
+
+  againBtn.addEventListener("click", () => {
+    $$(".rcard").forEach(c => { c.classList.remove("flip"); delete c.dataset.seen; });
+    seen = 0;
+    updReasons();
+    env.classList.remove("open");
+    envWrap.classList.remove("gone");
+    paper.classList.remove("show");
+    Array.from(paper.children).forEach(p => p.classList.remove("in"));
+    p5end.hidden = true;
+    try { voice.currentTime = 0; } catch (e) {}
+    resetAsk();
+    blown = false;
+    finale.classList.remove("blown");
+    cake.querySelectorAll(".candle").forEach(c => c.classList.remove("out"));
+    wishTa.value = "";
+    wishDone.hidden = true;
+    watchSecs();
+    go(0);
+  });
+
+  /* ===== كونفيتي ===== */
+  function burst(n) {
+    const layer = el("div", "confetti");
+    const cols = ["var(--accent)", "var(--soft)", "var(--candle)", "var(--candle2)", "#ffffff", "#ffd36e"];
+    for (let i = 0; i < n; i++) {
+      const p = el("i");
+      p.style.cssText =
+        `left:${(Math.random() * 100).toFixed(1)}%;background:${cols[i % cols.length]};` +
+        `width:${(6 + Math.random() * 5).toFixed(1)}px;height:${(9 + Math.random() * 8).toFixed(1)}px;` +
+        `--t:${(2.4 + Math.random() * 2).toFixed(2)}s;--dl:${(Math.random() * 0.6).toFixed(2)}s;` +
+        `--x:${((Math.random() - 0.5) * 180).toFixed(0)}px;--rot:${(Math.random() * 900 - 450).toFixed(0)}deg`;
+      layer.appendChild(p);
+    }
+    document.body.appendChild(layer);
+    setTimeout(() => layer.remove(), 5500);
+  }
+
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") { closeLB(); closeVideo(); }
+  });
+})();
 </script>
 </body>
 </html>
